@@ -16,4 +16,8 @@
 	return [IAHTheme colorFromHEX:0xFFFFFF];
 }
 
++ (UIColor *)colorForViewTint {
+	return [IAHTheme colorFromHEX:0x15428C];
+}
+
 @end

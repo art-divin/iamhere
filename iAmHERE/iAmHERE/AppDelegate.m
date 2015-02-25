@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "IAHUIManager.h"
+#import "IAHMapViewController.h"
+#import "IAHItineraryViewController.h"
+#import "IAHSearchViewController.h"
+#import "IAHTheme.h"
+#import "IAHThemeDefault.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +27,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	
+	[IAHTheme registerThemeClass:[IAHThemeDefault class]];
+	IAHMapViewController *mapVC = [IAHUIManager viewControllerForMap];
+	IAHItineraryViewController *itirenaryVC = [IAHUIManager viewControllerForItinerary];
+	IAHSearchViewController *searchVC = [IAHUIManager viewControllerForSearch];
+	UITabBarController *tabBarController = [[UITabBarController alloc] init];
+	[tabBarController setViewControllers:@[ searchVC, itirenaryVC, mapVC ]];
+	self.window.rootViewController = tabBarController;
+	self.window.tintColor = [IAHTheme colorForViewTint];
+	[self.window makeKeyAndVisible];
 	return YES;
 }
 

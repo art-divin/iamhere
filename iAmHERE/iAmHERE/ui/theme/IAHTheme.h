@@ -14,6 +14,7 @@
 
 @required
 + (UIColor *)colorForViewBackground;
++ (UIColor *)colorForViewTint;
 
 @end
 

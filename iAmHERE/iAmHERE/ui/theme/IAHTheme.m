@@ -53,6 +53,17 @@
 			return [[IAHTheme sharedTheme].themeClass colorForViewBackground];
 		}
 	}
+	NSAssert(false, @"theme subclass was not set!");
+	return nil;
+}
+
++ (UIColor *)colorForViewTint {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass colorForViewTint];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
 	return nil;
 }
 
