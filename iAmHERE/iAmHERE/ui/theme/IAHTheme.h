@@ -10,11 +10,18 @@
 
 @protocol IAHThemeInterface <NSObject>
 
-#pragma mark - Colours
+@required
++ (void)setupAppearance;
 
+// colours
 @required
 + (UIColor *)colorForViewBackground;
 + (UIColor *)colorForViewTint;
++ (UIColor *)colorForButtonTitle;
++ (UIColor *)colorForBarTint;
+
+// dimensions
++ (CGFloat)heightForTableViewCell;
 
 @end
 

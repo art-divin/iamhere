@@ -28,13 +28,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	[IAHTheme registerThemeClass:[IAHThemeDefault class]];
+	[IAHTheme setupAppearance];
 	IAHMapViewController *mapVC = [IAHUIManager viewControllerForMap];
 	IAHItineraryViewController *itirenaryVC = [IAHUIManager viewControllerForItinerary];
 	IAHSearchViewController *searchVC = [IAHUIManager viewControllerForSearch];
 	UITabBarController *tabBarController = [[UITabBarController alloc] init];
 	[tabBarController setViewControllers:@[ searchVC, itirenaryVC, mapVC ]];
 	self.window.rootViewController = tabBarController;
-	self.window.tintColor = [IAHTheme colorForViewTint];
 	[self.window makeKeyAndVisible];
 	return YES;
 }

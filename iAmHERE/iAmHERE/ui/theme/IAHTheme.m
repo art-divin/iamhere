@@ -45,6 +45,18 @@
 						   alpha:alpha];
 }
 
+#pragma mark - Appearance
+
++ (void)setupAppearance {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			[[IAHTheme sharedTheme].themeClass setupAppearance];
+			return;
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+}
+
 #pragma mark - Colours
 
 + (UIColor *)colorForViewBackground {
@@ -65,6 +77,38 @@
 	}
 	NSAssert(false, @"theme subclass was not set!");
 	return nil;
+}
+
++ (UIColor *)colorForButtonTitle {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass colorForButtonTitle];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return nil;
+}
+
++ (UIColor *)colorForBarTint {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass colorForBarTint];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return nil;
+}
+
+#pragma mark - Dimensions
+
++ (CGFloat)heightForTableViewCell {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass heightForTableViewCell];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return 0.0f;
 }
 
 @end
