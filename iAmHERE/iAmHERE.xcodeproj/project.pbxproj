@@ -649,6 +649,7 @@
 				C94A324F1A9E620E004AD09C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C94A32501A9E620E004AD09C /* Build configuration list for PBXNativeTarget "iAmHERETests" */ = {
 			isa = XCConfigurationList;
@@ -657,6 +658,7 @@
 				C94A32521A9E620E004AD09C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
