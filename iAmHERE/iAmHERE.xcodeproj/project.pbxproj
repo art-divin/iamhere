@@ -19,6 +19,9 @@
 		C94A327A1A9E665F004AD09C /* IAHItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32791A9E665F004AD09C /* IAHItineraryViewController.m */; };
 		C94A327D1A9E666E004AD09C /* IAHSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A327C1A9E666E004AD09C /* IAHSearchViewController.m */; };
 		C94A32811A9E669A004AD09C /* IAHMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32801A9E669A004AD09C /* IAHMapViewController.m */; };
+		C94A328A1A9E67C4004AD09C /* IAHUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32891A9E67C4004AD09C /* IAHUIManager.m */; };
+		C94A328C1A9E6885004AD09C /* IAHTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A328B1A9E6885004AD09C /* IAHTheme.m */; };
+		C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,12 @@
 		C94A327C1A9E666E004AD09C /* IAHSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHSearchViewController.m; path = controllers/searchController/IAHSearchViewController.m; sourceTree = "<group>"; };
 		C94A327F1A9E669A004AD09C /* IAHMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHMapViewController.h; path = controllers/mapController/IAHMapViewController.h; sourceTree = "<group>"; };
 		C94A32801A9E669A004AD09C /* IAHMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHMapViewController.m; path = controllers/mapController/IAHMapViewController.m; sourceTree = "<group>"; };
+		C94A32841A9E676E004AD09C /* IAHTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHTheme.h; path = ui/theme/IAHTheme.h; sourceTree = "<group>"; };
+		C94A32881A9E67C4004AD09C /* IAHUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHUIManager.h; path = ui/UIManager/IAHUIManager.h; sourceTree = "<group>"; };
+		C94A32891A9E67C4004AD09C /* IAHUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHUIManager.m; path = ui/UIManager/IAHUIManager.m; sourceTree = "<group>"; };
+		C94A328B1A9E6885004AD09C /* IAHTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHTheme.m; path = ui/theme/IAHTheme.m; sourceTree = "<group>"; };
+		C94A328E1A9E6911004AD09C /* IAHThemeDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHThemeDefault.h; path = ui/theme/default/IAHThemeDefault.h; sourceTree = "<group>"; };
+		C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHThemeDefault.m; path = ui/theme/default/IAHThemeDefault.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,7 @@
 		C94A32291A9E620E004AD09C /* iAmHERE */ = {
 			isa = PBXGroup;
 			children = (
+				C94A32821A9E6754004AD09C /* ui */,
 				C94A32701A9E6462004AD09C /* controllers */,
 				C94A32601A9E63DF004AD09C /* libs */,
 				C94A32581A9E637B004AD09C /* model */,
@@ -252,6 +262,43 @@
 				C94A32801A9E669A004AD09C /* IAHMapViewController.m */,
 			);
 			name = mapController;
+			sourceTree = "<group>";
+		};
+		C94A32821A9E6754004AD09C /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				C94A32871A9E6794004AD09C /* UIManager */,
+				C94A32831A9E675B004AD09C /* theme */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		C94A32831A9E675B004AD09C /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				C94A328D1A9E68ED004AD09C /* default */,
+				C94A32841A9E676E004AD09C /* IAHTheme.h */,
+				C94A328B1A9E6885004AD09C /* IAHTheme.m */,
+			);
+			name = theme;
+			sourceTree = "<group>";
+		};
+		C94A32871A9E6794004AD09C /* UIManager */ = {
+			isa = PBXGroup;
+			children = (
+				C94A32881A9E67C4004AD09C /* IAHUIManager.h */,
+				C94A32891A9E67C4004AD09C /* IAHUIManager.m */,
+			);
+			name = UIManager;
+			sourceTree = "<group>";
+		};
+		C94A328D1A9E68ED004AD09C /* default */ = {
+			isa = PBXGroup;
+			children = (
+				C94A328E1A9E6911004AD09C /* IAHThemeDefault.h */,
+				C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */,
+			);
+			name = default;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,9 +451,12 @@
 			files = (
 				C94A32811A9E669A004AD09C /* IAHMapViewController.m in Sources */,
 				C94A325F1A9E63D6004AD09C /* IAHPersistenceManager.m in Sources */,
+				C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */,
 				C94A327A1A9E665F004AD09C /* IAHItineraryViewController.m in Sources */,
 				C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */,
+				C94A328A1A9E67C4004AD09C /* IAHUIManager.m in Sources */,
 				C94A32771A9E6640004AD09C /* IAHCustomViewController.m in Sources */,
+				C94A328C1A9E6885004AD09C /* IAHTheme.m in Sources */,
 				C94A327D1A9E666E004AD09C /* IAHSearchViewController.m in Sources */,
 				C94A325B1A9E637B004AD09C /* iAmHERE.xcdatamodeld in Sources */,
 				C94A322D1A9E620E004AD09C /* main.m in Sources */,
