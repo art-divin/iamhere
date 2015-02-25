@@ -6,8 +6,7 @@
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
+@import XCTest;
 
 @interface iAmHERETests : XCTestCase
 
