@@ -22,6 +22,8 @@
 		C94A328A1A9E67C4004AD09C /* IAHUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32891A9E67C4004AD09C /* IAHUIManager.m */; };
 		C94A328C1A9E6885004AD09C /* IAHTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A328B1A9E6885004AD09C /* IAHTheme.m */; };
 		C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */; };
+		C94A32951A9E6E2B004AD09C /* IAHRESTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32941A9E6E2B004AD09C /* IAHRESTManager.m */; };
+		C94A329A1A9E6E8B004AD09C /* IAHThemeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,9 @@
 		C94A328B1A9E6885004AD09C /* IAHTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHTheme.m; path = ui/theme/IAHTheme.m; sourceTree = "<group>"; };
 		C94A328E1A9E6911004AD09C /* IAHThemeDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHThemeDefault.h; path = ui/theme/default/IAHThemeDefault.h; sourceTree = "<group>"; };
 		C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHThemeDefault.m; path = ui/theme/default/IAHThemeDefault.m; sourceTree = "<group>"; };
+		C94A32931A9E6E2B004AD09C /* IAHRESTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRESTManager.h; path = services/networking/IAHRESTManager.h; sourceTree = "<group>"; };
+		C94A32941A9E6E2B004AD09C /* IAHRESTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRESTManager.m; path = services/networking/IAHRESTManager.m; sourceTree = "<group>"; };
+		C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHThemeTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				C94A32491A9E620E004AD09C /* iAmHERETests.m */,
+				C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */,
 				C94A32471A9E620E004AD09C /* Supporting Files */,
 			);
 			path = iAmHERETests;
@@ -176,6 +182,7 @@
 		C94A32531A9E62D6004AD09C /* services */ = {
 			isa = PBXGroup;
 			children = (
+				C94A32911A9E6DE5004AD09C /* networking */,
 				C94A325C1A9E63D6004AD09C /* persistence */,
 			);
 			name = services;
@@ -299,6 +306,15 @@
 				C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */,
 			);
 			name = default;
+			sourceTree = "<group>";
+		};
+		C94A32911A9E6DE5004AD09C /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				C94A32931A9E6E2B004AD09C /* IAHRESTManager.h */,
+				C94A32941A9E6E2B004AD09C /* IAHRESTManager.m */,
+			);
+			name = networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +467,7 @@
 			files = (
 				C94A32811A9E669A004AD09C /* IAHMapViewController.m in Sources */,
 				C94A325F1A9E63D6004AD09C /* IAHPersistenceManager.m in Sources */,
+				C94A32951A9E6E2B004AD09C /* IAHRESTManager.m in Sources */,
 				C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */,
 				C94A327A1A9E665F004AD09C /* IAHItineraryViewController.m in Sources */,
 				C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */,
@@ -467,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94A329A1A9E6E8B004AD09C /* IAHThemeTests.m in Sources */,
 				C94A324A1A9E620E004AD09C /* iAmHERETests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
