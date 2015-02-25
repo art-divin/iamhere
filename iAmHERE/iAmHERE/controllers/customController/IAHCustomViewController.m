@@ -7,6 +7,7 @@
 //
 
 #import "IAHCustomViewController.h"
+#import "IAHTheme.h"
 
 @interface IAHCustomViewController ()
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	[self.view setBackgroundColor:[IAHTheme colorForViewBackground]];
 }
 
 - (void)didReceiveMemoryWarning {
