@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
-#import <NetworkingLibrary/NetworkingLibrary.h>
+@import Networking;
 
 @interface IAHRESTManager : XTOperationManager
 
