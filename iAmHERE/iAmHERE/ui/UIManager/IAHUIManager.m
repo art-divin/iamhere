@@ -18,9 +18,10 @@
 	return mapVC;
 }
 
-+ (IAHItineraryViewController *)viewControllerForItinerary {
++ (UINavigationController *)viewControllerForItinerary {
 	IAHItineraryViewController *itineraryVC = [IAHItineraryViewController new];
-	return itineraryVC;
+	UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:itineraryVC];
+	return navCtrl;
 }
 
 + (IAHSearchViewController *)viewControllerForSearch {

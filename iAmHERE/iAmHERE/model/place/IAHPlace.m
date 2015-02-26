@@ -40,6 +40,7 @@
 @dynamic iconURLStr;
 @dynamic href;
 @dynamic idx;
+@dynamic itinerary;
 
 #pragma mark - IAHMapping
 

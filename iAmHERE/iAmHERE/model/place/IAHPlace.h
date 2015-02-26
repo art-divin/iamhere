@@ -11,6 +11,8 @@
 @import CoreData;
 @import MapKit;
 
+@class IAHItinerary;
+
 @interface IAHPlace : NSManagedObject <IAHMapping>
 
 @property (nonatomic, strong) NSString *identifier;
@@ -20,6 +22,7 @@
 @property (nonatomic, strong) NSString *vicinity;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSNumber *idx;
+@property (nonatomic, strong) IAHItinerary *itinerary;
 
 - (NSURL *)hrefURL;
 - (NSURL *)iconURL;

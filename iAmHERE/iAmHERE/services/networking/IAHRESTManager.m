@@ -99,8 +99,8 @@
 															 finishBlock:
 									 ^(NSDictionary *resultDic, NSDictionary *headerDic, NSError *error) {
 										 if (error) {
-											 XTResponseError *error = [XTResponseError errorWithCode:error.code message:error.localizedDescription];
-											 completionBlock(nil, error);
+											 XTResponseError *err = [XTResponseError errorWithCode:error.code message:error.localizedDescription];
+											 completionBlock(nil, err);
 											 return;
 										 }
 										 if (!resultDic) {

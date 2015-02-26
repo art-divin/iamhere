@@ -10,6 +10,7 @@
 #import "IAHTheme.h"
 #import "IAHObjectManager.h"
 #import "IAHLocationManager.h"
+#import "IAHRouteManager.h"
 
 @interface IAHSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -63,6 +64,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	if (self.resultArr.count) {
+		[self.tableView reloadData];
+	}
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -103,6 +107,11 @@
 	cell.detailTextLabel.numberOfLines = 0;
 	cell.textLabel.attributedText = titleAttrStr;
 	cell.detailTextLabel.attributedText = vicinityAttrStr;
+	if (place.itinerary) {
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	} else {
+		cell.accessoryType = UITableViewCellAccessoryNone;
+	}
 	return cell;
 }
 
@@ -133,6 +142,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	IAHPlace *place = self.resultArr[indexPath.row];
+	if (place.itinerary) {
+		[[IAHRouteManager sharedManager] removePlace:place];
+	} else {
+		[[IAHRouteManager sharedManager] addPlace:place];
+	}
+	[[IAHRouteManager sharedManager] saveWithCallback:^(NSError *error) {
+		// TODO: show error dialog
+	}];
+	[tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - UISearchBarDelegate

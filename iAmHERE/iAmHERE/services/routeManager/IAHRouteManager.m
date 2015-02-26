@@ -9,12 +9,9 @@
 #import "IAHRouteManager.h"
 #import "IAHPersistenceManager.h"
 #import "IAHItinerary.h"
+#import "IAHPlace.h"
 
 @interface IAHRouteManager ()
-
-@property (nonatomic, strong) IAHItinerary *itinerary;
-
-+ (instancetype)sharedManager;
 
 @end
 
@@ -43,6 +40,30 @@
 		instance = [IAHRouteManager new];
 	});
 	return instance;
+}
+
+- (void)addPlace:(IAHPlace *)place {
+	place.idx = @(self.itinerary.places.count);
+	[self.itinerary addPlacesObject:place];
+}
+
+- (void)removePlace:(IAHPlace *)place {
+	[self.itinerary removePlacesObject:place];
+}
+
+- (void)exchangePlace:(IAHPlace *)place withPlace:(IAHPlace *)withPlace {
+	NSNumber *idx = place.idx;
+	place.idx = withPlace.idx;
+	withPlace.idx = idx;
+}
+
+- (void)saveWithCallback:(void (^)(NSError *))callback {
+	[IAHPersistenceManager saveContext:^(NSError *error) {
+		// TODO: handle errors
+		if (callback) {
+			callback(error);
+		}
+	}];
 }
 
 @end
