@@ -28,6 +28,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationUsageDescription</key>
+	<string>Location is required for iAmHERE app to work properly</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is required for iAmHERE app to work properly</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

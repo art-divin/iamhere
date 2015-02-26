@@ -10,7 +10,7 @@
 
 #import "XTGlobals.h"
 
-typedef void (^XTOperationCompletion)(NSDictionary *, NSError *);
+typedef void (^XTOperationCompletion)(NSDictionary *, NSDictionary *, NSError *);
 
 typedef NS_ENUM(NSUInteger, XTOperationType) {
 	XTOperationTypeGET = 0,
@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger, XTOperationType) {
 + (instancetype)operationWithURL:(NSURL *)URL
 							type:(XTOperationType)type
 						 dataDic:(NSDictionary *)dataDic
+					   headerDic:(NSDictionary *)headerDic
 					 contentType:(NSString *)contentType
 					 finishBlock:(XTOperationCompletion)finishBlock;
 

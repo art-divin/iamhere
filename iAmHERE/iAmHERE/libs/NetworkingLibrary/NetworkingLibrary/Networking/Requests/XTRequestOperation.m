@@ -18,6 +18,7 @@
 - (instancetype)initWithURL:(NSURL *)URL
 					   type:(XTOperationType)type
 					dataDic:(NSDictionary *)dataDic
+				  headerDic:(NSDictionary *)headerDic
 				contentType:(NSString *)contentType
 				finishBlock:(XTOperationCompletion)finishBlock;
 
@@ -43,6 +44,7 @@ NSUInteger const XTOperationTimeout = 30;
 - (instancetype)initWithURL:(NSURL *)URL
 					   type:(XTOperationType)type
 					dataDic:(NSDictionary *)dataDic
+				  headerDic:(NSDictionary *)headerDic
 				contentType:(NSString *)contentType
 				finishBlock:(XTOperationCompletion)finishBlock
 {
@@ -55,6 +57,10 @@ NSUInteger const XTOperationTimeout = 30;
 		_request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:XTOperationTimeout];
 		[_request addValue:contentType ?: @"application/json" forHTTPHeaderField:type == XTOperationTypeGET ? @"Accept" : @"Content-Type"];
 		[_request setHTTPMethod:[XTRequestOperation HTTPMethodFromType:type]];
+		__weak typeof(self) weakSelf = self;
+		[headerDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+			[weakSelf.request addValue:obj forHTTPHeaderField:key];
+		}];
 		if (dataDic) {
 			NSError *error = nil;
 			NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDic options:kNilOptions error:&error];
@@ -70,10 +76,16 @@ NSUInteger const XTOperationTimeout = 30;
 + (instancetype)operationWithURL:(NSURL *)URL
 							type:(XTOperationType)type
 						 dataDic:(NSDictionary *)dataDic
+					   headerDic:(NSDictionary *)headerDic
 					 contentType:(NSString *)contentType
 					 finishBlock:(XTOperationCompletion)finishBlock
 {
-	XTRequestOperation *retVal = [[XTRequestOperation alloc] initWithURL:URL type:type dataDic:dataDic contentType:contentType finishBlock:finishBlock];
+	XTRequestOperation *retVal = [[XTRequestOperation alloc] initWithURL:URL
+																	type:type
+																 dataDic:dataDic
+															   headerDic:headerDic
+															 contentType:contentType
+															 finishBlock:finishBlock];
 	[XTLogger log:^{
 		XTLog(@"URL: %@", [URL absoluteString]);
 		if (dataDic) {
@@ -107,7 +119,7 @@ NSUInteger const XTOperationTimeout = 30;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	if (self.finishBlock) {
-		self.finishBlock(nil, error);
+		self.finishBlock(nil, connection.currentRequest.allHTTPHeaderFields, error);
 	}
 }
 
@@ -123,7 +135,7 @@ NSUInteger const XTOperationTimeout = 30;
 		XTLog(@"error while parsing response: %@", [error localizedDescription]);
 	}
 	if (self.finishBlock) {
-		self.finishBlock(parsedJSONDic, error);
+		self.finishBlock(parsedJSONDic, connection.currentRequest.allHTTPHeaderFields, error);
 	}
 }
 

@@ -19,10 +19,13 @@
  */
 @interface XTOperationManager : NSObject
 
-+ (NSURLComponents *)URLComponents;
-+ (void)scheduleOperation:(XTRequestOperation *)operation;
-+ (id)URLQueryWithParams:(NSDictionary *)paramsDic;
+- (NSURLComponents *)URLComponents;
+- (void)scheduleOperation:(XTRequestOperation *)operation;
+- (void)setupWithConfiguration:(XTConfiguration *(^)())configurationBlock;
 
-+ (void)setupWithConfiguration:(XTConfiguration *(^)())configurationBlock;
+/*! This method returns either NSString configured from specified
+ * dictionary (iOS 7.x), or \c NSArray of \c NSURLQueryItem instances (iOS 8.x)
+ */
++ (id)URLQueryWithParams:(NSDictionary *)paramsDic;
 
 @end

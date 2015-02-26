@@ -8,6 +8,8 @@
 
 #import "IAHSearchViewController.h"
 #import "IAHTheme.h"
+#import "IAHObjectManager.h"
+#import "IAHLocationManager.h"
 
 @interface IAHSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -27,7 +29,7 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
@@ -54,8 +56,8 @@
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource
@@ -82,15 +84,28 @@
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-	// TODO: send search query
+	// TODO: send search suggestion query
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	
 	[searchBar resignFirstResponder];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-	[searchBar resignFirstResponder];
+	[IAHLocationManager fetchCurrentLocationWithSubscription:^(CLLocationCoordinate2D coordinate) {
+		if (CLLocationCoordinate2DIsValid(coordinate)) {
+			[IAHObjectManager fetchPlacesForQuery:searchBar.text
+									   coordinate:coordinate
+										 callback:
+			 ^(NSArray *result, XTResponseError *error) {
+				 
+			 }];
+			[searchBar resignFirstResponder];
+		} else {
+			// TODO: show an error
+		}
+	}];
 }
 
 @end

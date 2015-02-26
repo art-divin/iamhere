@@ -6,8 +6,13 @@
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
+@import MapKit;
 @import Networking;
 
-@interface IAHRESTManager : XTOperationManager
+@interface IAHRESTManager : NSObject
+
++ (void)fetchPlacesForQuery:(NSString *)query
+				 atLocation:(CLLocationCoordinate2D)coordinate
+			completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock;
 
 @end
