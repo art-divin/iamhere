@@ -8,6 +8,8 @@
 
 @import Networking;
 
-@interface IAHRESTManager : XTOperationManager
+@interface IAHRESTManager : NSObject
+
++ (void)fetchPlacesForQuery:(NSString *)query completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock;
 
 @end

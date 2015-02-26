@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C92E46811A9E77AC008CF84A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C92E467E1A9E77AC008CF84A /* Localizable.strings */; };
+		C92E468B1A9E8805008CF84A /* PlacesConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = C92E468A1A9E8805008CF84A /* PlacesConfig.plist */; };
+		C92E468D1A9E8DA2008CF84A /* RouteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = C92E468C1A9E8DA2008CF84A /* RouteConfig.plist */; };
+		C92E46911A9E8E3B008CF84A /* IAHRESTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46901A9E8E3B008CF84A /* IAHRESTConfiguration.m */; };
+		C92E46951A9E9A78008CF84A /* IAHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46941A9E9A78008CF84A /* IAHObjectManager.m */; };
 		C94A322D1A9E620E004AD09C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322C1A9E620E004AD09C /* main.m */; };
 		C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322F1A9E620E004AD09C /* AppDelegate.m */; };
 		C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94A323A1A9E620E004AD09C /* Images.xcassets */; };
@@ -68,6 +72,12 @@
 /* Begin PBXFileReference section */
 		C92E467F1A9E77AC008CF84A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C92E46801A9E77AC008CF84A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C92E468A1A9E8805008CF84A /* PlacesConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlacesConfig.plist; sourceTree = "<group>"; };
+		C92E468C1A9E8DA2008CF84A /* RouteConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RouteConfig.plist; sourceTree = "<group>"; };
+		C92E468F1A9E8E3B008CF84A /* IAHRESTConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRESTConfiguration.h; path = configuration/IAHRESTConfiguration.h; sourceTree = "<group>"; };
+		C92E46901A9E8E3B008CF84A /* IAHRESTConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRESTConfiguration.m; path = configuration/IAHRESTConfiguration.m; sourceTree = "<group>"; };
+		C92E46931A9E9A78008CF84A /* IAHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHObjectManager.h; path = services/objectManager/IAHObjectManager.h; sourceTree = "<group>"; };
+		C92E46941A9E9A78008CF84A /* IAHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHObjectManager.m; path = services/objectManager/IAHObjectManager.m; sourceTree = "<group>"; };
 		C94A32271A9E620E004AD09C /* iAmHERE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmHERE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94A322B1A9E620E004AD09C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94A322C1A9E620E004AD09C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,8 +134,28 @@
 			isa = PBXGroup;
 			children = (
 				C92E467E1A9E77AC008CF84A /* Localizable.strings */,
+				C92E468A1A9E8805008CF84A /* PlacesConfig.plist */,
+				C92E468C1A9E8DA2008CF84A /* RouteConfig.plist */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		C92E468E1A9E8E1D008CF84A /* configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C92E468F1A9E8E3B008CF84A /* IAHRESTConfiguration.h */,
+				C92E46901A9E8E3B008CF84A /* IAHRESTConfiguration.m */,
+			);
+			name = configuration;
+			sourceTree = "<group>";
+		};
+		C92E46921A9E9A60008CF84A /* objectManager */ = {
+			isa = PBXGroup;
+			children = (
+				C92E46931A9E9A78008CF84A /* IAHObjectManager.h */,
+				C92E46941A9E9A78008CF84A /* IAHObjectManager.m */,
+			);
+			name = objectManager;
 			sourceTree = "<group>";
 		};
 		C94A321E1A9E620E004AD09C = {
@@ -194,6 +224,7 @@
 		C94A32531A9E62D6004AD09C /* services */ = {
 			isa = PBXGroup;
 			children = (
+				C92E46921A9E9A60008CF84A /* objectManager */,
 				C94A32911A9E6DE5004AD09C /* networking */,
 				C94A325C1A9E63D6004AD09C /* persistence */,
 			);
@@ -203,6 +234,7 @@
 		C94A32581A9E637B004AD09C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C92E468E1A9E8E1D008CF84A /* configuration */,
 				C94A32591A9E637B004AD09C /* iAmHERE.xcdatamodeld */,
 			);
 			path = model;
@@ -441,7 +473,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92E468B1A9E8805008CF84A /* PlacesConfig.plist in Resources */,
 				C94A323E1A9E620E004AD09C /* LaunchScreen.xib in Resources */,
+				C92E468D1A9E8DA2008CF84A /* RouteConfig.plist in Resources */,
 				C92E46811A9E77AC008CF84A /* Localizable.strings in Resources */,
 				C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */,
 			);
@@ -490,6 +524,8 @@
 				C94A327D1A9E666E004AD09C /* IAHSearchViewController.m in Sources */,
 				C94A325B1A9E637B004AD09C /* iAmHERE.xcdatamodeld in Sources */,
 				C94A322D1A9E620E004AD09C /* main.m in Sources */,
+				C92E46911A9E8E3B008CF84A /* IAHRESTConfiguration.m in Sources */,
+				C92E46951A9E9A78008CF84A /* IAHObjectManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,10 +654,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = iAmHERE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -629,10 +667,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = iAmHERE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

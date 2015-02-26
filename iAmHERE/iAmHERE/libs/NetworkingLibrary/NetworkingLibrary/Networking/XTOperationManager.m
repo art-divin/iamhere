@@ -20,23 +20,9 @@
  */
 - (NSURL *)endpointURL;
 
-/*! singleton for working with manager */
-+ (instancetype)sharedManager;
-
 @end
 
 @implementation XTOperationManager
-
-#pragma mark - singleton
-
-+ (instancetype)sharedManager {
-	static XTOperationManager *instance = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		instance = [XTOperationManager new];
-	});
-	return instance;
-}
 
 #pragma mark - init
 
@@ -48,17 +34,17 @@
 	return self;
 }
 
-+ (void)setupWithConfiguration:(XTConfiguration *(^)())configurationBlock {
+- (void)setupWithConfiguration:(XTConfiguration *(^)())configurationBlock {
 	NSParameterAssert(configurationBlock);
 	XTConfiguration *configuration = configurationBlock();
 	NSAssert([configuration isKindOfClass:[XTConfigurationInternal class]], @"invalid configuration instance provided! Please allocate configuration using public interface");
-	[XTOperationManager sharedManager].configuration = (XTConfigurationInternal *)configuration;
+	self.configuration = (XTConfigurationInternal *)configuration;
 }
 
 #pragma mark - private
 
-+ (NSURLComponents *)URLComponents {
-	NSURL *endpointURL = [XTOperationManager sharedManager].endpointURL;
+- (NSURLComponents *)URLComponents {
+	NSURL *endpointURL = self.endpointURL;
 	NSURLComponents *comps = [NSURLComponents componentsWithURL:endpointURL resolvingAgainstBaseURL:NO];
 	return comps;
 }
@@ -67,8 +53,8 @@
 	return self.configuration.endpoint;
 }
 
-+ (void)scheduleOperation:(XTRequestOperation *)operation {
-	[[XTOperationManager sharedManager].queue addOperation:operation];
+- (void)scheduleOperation:(XTRequestOperation *)operation {
+	[self.queue addOperation:operation];
 }
 
 + (id)URLQueryWithParams:(NSDictionary *)paramsDic {

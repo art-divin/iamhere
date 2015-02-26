@@ -14,6 +14,8 @@
 #import "IAHTheme.h"
 #import "IAHThemeDefault.h"
 
+@import Networking;
+
 @interface AppDelegate ()
 
 @end
@@ -27,6 +29,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	[XTLogger setupWithConfiguration:XTConfigurationTypeDev];
 	[IAHTheme registerThemeClass:[IAHThemeDefault class]];
 	[IAHTheme setupAppearance];
 	IAHMapViewController *mapVC = [IAHUIManager viewControllerForMap];
