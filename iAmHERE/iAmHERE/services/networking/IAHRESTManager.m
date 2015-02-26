@@ -12,6 +12,8 @@
 #define kFieldConfigPlaces		@"PlacesConfig"
 #define kFieldConfigRoute		@"RouteConfig"
 #define kFieldConfigType		@"plist"
+#define kFieldResults			@"results"
+#define kFieldItems				@"items"
 
 @interface IAHRESTManager ()
 
@@ -96,7 +98,29 @@
 															 contentType:@"application/json"
 															 finishBlock:
 									 ^(NSDictionary *resultDic, NSDictionary *headerDic, NSError *error) {
-										 
+										 if (error) {
+											 XTResponseError *error = [XTResponseError errorWithCode:error.code message:error.localizedDescription];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 if (!resultDic) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.empty", @"Empty response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 if (![resultDic isKindOfClass:[NSDictionary class]]) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 NSDictionary *resultsDic = resultDic[kFieldResults];
+										 if (![resultDic isKindOfClass:[NSDictionary class]]) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 NSArray *itemArr = resultsDic[kFieldItems];
+										 completionBlock(itemArr, nil);
 									 }];
 	[opMan scheduleOperation:operation];
 }

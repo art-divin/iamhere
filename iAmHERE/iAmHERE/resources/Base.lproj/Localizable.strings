@@ -9,3 +9,7 @@
 "controllers.map.title" = "MAP";
 "controllers.itinerary.title" = "ROUTE";
 "controllers.search.title" = "SEARCH";
+
+"errors.response.empty" = "Empty response returned. Please try again";
+"errors.response.invalid" = "Invalid response returned. Please check parameters";
+"errors.cache.save" = "Unable to save cache. Please check parameters";

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
+#import "IAHPlace.h"
+
 @import MapKit;
 @import Foundation;
 @import Networking;
