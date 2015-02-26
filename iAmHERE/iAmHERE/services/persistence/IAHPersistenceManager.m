@@ -8,11 +8,15 @@
 
 #import "IAHPersistenceManager.h"
 
+@import Networking;
+
 @interface IAHPersistenceManager ()
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
++ (instancetype)sharedManager;
 
 - (NSURL *)applicationDocumentsDirectory;
 
@@ -25,6 +29,15 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
++ (instancetype)sharedManager {
+	static IAHPersistenceManager *instance = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		instance = [IAHPersistenceManager new];
+	});
+	return instance;
+}
 
 - (NSURL *)applicationDocumentsDirectory {
 	// The directory the application uses to store the Core Data store file. This code uses a directory named "com.i.am.here.test.iAmHERE" in the application's documents directory.
@@ -85,18 +98,80 @@
 	return _managedObjectContext;
 }
 
-#pragma mark - Core Data Saving support
+#pragma mark - public API
 
-- (void)saveContext {
-	NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
++ (id <IAHMapping>)createObjectWithType:(Class)type {
+	NSParameterAssert(type);
+	NSManagedObjectContext *managedObjectContext = [IAHPersistenceManager sharedManager].managedObjectContext;
+	NSString *entityName = NSStringFromClass(type);
+	NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:managedObjectContext];
+	NSManagedObject *retVal = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+	return (id <IAHMapping>)retVal;
+}
+
++ (id <IAHMapping>)objectWithType:(Class)type
+						predicate:(NSString *)predicateFmt
+						arguments:(NSArray *)argsArr
+{
+	NSParameterAssert(type);
+	NSManagedObjectContext *managedObjectContext = [IAHPersistenceManager sharedManager].managedObjectContext;
+	NSString *entityName = NSStringFromClass(type);
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
+	if (predicateFmt.length > 0 && argsArr) {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFmt argumentArray:argsArr];
+		request.predicate = predicate;
+	}
+	[request setFetchLimit:1];
+	NSError *error = nil;
+	NSArray *retVal = [managedObjectContext executeFetchRequest:request error:&error];
+	if (error) {
+		[XTLogger log:^{
+			XTLog(@"%@\n%@", [error localizedDescription], [error userInfo]);
+		}];
+	}
+	return [retVal firstObject];
+}
+
++ (NSArray *)objectsWithType:(Class)type
+				   predicate:(NSString *)predicateFmt
+				   arguments:(NSArray *)argsArr
+			 sortDescriptors:(NSArray *)sortDescrArr
+{
+	NSParameterAssert(type);
+	NSManagedObjectContext *managedObjectContext = [IAHPersistenceManager sharedManager].managedObjectContext;
+	NSString *entityName = NSStringFromClass(type);
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
+	if (predicateFmt.length > 0 && argsArr) {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFmt argumentArray:argsArr];
+		request.predicate = predicate;
+	}
+	request.sortDescriptors = sortDescrArr;
+	NSError *error = nil;
+	NSArray *retVal = [managedObjectContext executeFetchRequest:request error:&error];
+	if (error) {
+		[XTLogger log:^{
+			XTLog(@"%@\n%@", [error localizedDescription], [error userInfo]);
+		}];
+	}
+	return retVal;
+}
+
++ (void)deleteObject:(id <IAHMapping>)object {
+	NSParameterAssert(object);
+	NSManagedObjectContext *managedObjectContext = [IAHPersistenceManager sharedManager].managedObjectContext;
+	[managedObjectContext deleteObject:object];
+}
+
++ (void)saveContext:(void (^)(NSError *))callback {
+	NSManagedObjectContext *managedObjectContext = [IAHPersistenceManager sharedManager].managedObjectContext;
 	if (managedObjectContext != nil) {
 		NSError *error = nil;
 		if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-			// Replace this implementation with code to handle the error appropriately.
-			// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			abort();
+			[XTLogger log:^{
+				XTLog(@"%@\n%@", [error localizedDescription], [error userInfo]);
+			}];
 		}
+		callback(error);
 	}
 }
 

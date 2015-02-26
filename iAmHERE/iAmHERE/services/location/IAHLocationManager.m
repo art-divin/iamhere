@@ -23,13 +23,16 @@
 - (instancetype)init {
 	self = [super init];
 	if (self) {
-		_locManager = [[CLLocationManager alloc] init];
-		_subscriptionArr = [NSMutableArray new];
-		if ([_locManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-			[_locManager requestWhenInUseAuthorization];
-		}
-		[_locManager startUpdatingLocation];
-		_locManager.delegate = self;
+		__weak typeof(self) weakSelf = self;
+		dispatch_async(dispatch_get_main_queue(), ^{
+			weakSelf.locManager = [[CLLocationManager alloc] init];
+			weakSelf.subscriptionArr = [NSMutableArray new];
+			if ([weakSelf.locManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+				[weakSelf.locManager requestWhenInUseAuthorization];
+			}
+			[weakSelf.locManager startUpdatingLocation];
+			weakSelf.locManager.delegate = self;
+		});
 	}
 	return self;
 }

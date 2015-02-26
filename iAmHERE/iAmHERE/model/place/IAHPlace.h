@@ -6,8 +6,22 @@
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
+#import "IAHMapping.h"
 
-@interface IAHPlace : NSManagedObject
+@import CoreData;
+@import MapKit;
+
+@interface IAHPlace : NSManagedObject <IAHMapping>
+
+@property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, strong) NSNumber *distance;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSNumber *averageRating;
+@property (nonatomic, strong) NSString *vicinity;
+@property (nonatomic, strong) NSString *type;
+
+- (NSURL *)hrefURL;
+- (NSURL *)iconURL;
+- (CLLocation *)location;
 
 @end
