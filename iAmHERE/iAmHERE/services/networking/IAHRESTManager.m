@@ -72,11 +72,15 @@
 	return @{ @"Authorization" : authHeaderStr };
 }
 
-+ (void)fetchPlacesForQuery:(NSString *)query completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock {
++ (void)fetchPlacesForQuery:(NSString *)query
+				 atLocation:(CLLocationCoordinate2D)coordinate
+			completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock
+{
 	NSParameterAssert(query);
 	NSParameterAssert(completionBlock);
 	XTOperationManager *opMan = [IAHRESTManager sharedManager].placesOperationManager;
-	id urlQuery = [XTOperationManager URLQueryWithParams:@{ @"q" : query }];
+	NSString *locationStr = [NSString stringWithFormat:@"%f,%f;cgen=gps", coordinate.latitude, coordinate.longitude];
+	id urlQuery = [XTOperationManager URLQueryWithParams:@{ @"q" : query, @"at" : locationStr }];
 	NSURLComponents *comps = [opMan URLComponents];
 	comps.path = [comps.path stringByAppendingString:@"/discover/search"];
 	if ([NSURLQueryItem class]) {

@@ -12,6 +12,7 @@
 		C92E468D1A9E8DA2008CF84A /* RouteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = C92E468C1A9E8DA2008CF84A /* RouteConfig.plist */; };
 		C92E46911A9E8E3B008CF84A /* IAHRESTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46901A9E8E3B008CF84A /* IAHRESTConfiguration.m */; };
 		C92E46951A9E9A78008CF84A /* IAHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46941A9E9A78008CF84A /* IAHObjectManager.m */; };
+		C92E469A1A9EA0E1008CF84A /* IAHLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */; };
 		C94A322D1A9E620E004AD09C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322C1A9E620E004AD09C /* main.m */; };
 		C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322F1A9E620E004AD09C /* AppDelegate.m */; };
 		C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94A323A1A9E620E004AD09C /* Images.xcassets */; };
@@ -78,6 +79,8 @@
 		C92E46901A9E8E3B008CF84A /* IAHRESTConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRESTConfiguration.m; path = configuration/IAHRESTConfiguration.m; sourceTree = "<group>"; };
 		C92E46931A9E9A78008CF84A /* IAHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHObjectManager.h; path = services/objectManager/IAHObjectManager.h; sourceTree = "<group>"; };
 		C92E46941A9E9A78008CF84A /* IAHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHObjectManager.m; path = services/objectManager/IAHObjectManager.m; sourceTree = "<group>"; };
+		C92E46981A9EA0E1008CF84A /* IAHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHLocationManager.h; sourceTree = "<group>"; };
+		C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHLocationManager.m; sourceTree = "<group>"; };
 		C94A32271A9E620E004AD09C /* iAmHERE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmHERE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94A322B1A9E620E004AD09C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94A322C1A9E620E004AD09C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -158,6 +161,16 @@
 			name = objectManager;
 			sourceTree = "<group>";
 		};
+		C92E46971A9EA0E1008CF84A /* location */ = {
+			isa = PBXGroup;
+			children = (
+				C92E46981A9EA0E1008CF84A /* IAHLocationManager.h */,
+				C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */,
+			);
+			name = location;
+			path = services/location;
+			sourceTree = "<group>";
+		};
 		C94A321E1A9E620E004AD09C = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +237,7 @@
 		C94A32531A9E62D6004AD09C /* services */ = {
 			isa = PBXGroup;
 			children = (
+				C92E46971A9EA0E1008CF84A /* location */,
 				C92E46921A9E9A60008CF84A /* objectManager */,
 				C94A32911A9E6DE5004AD09C /* networking */,
 				C94A325C1A9E63D6004AD09C /* persistence */,
@@ -516,6 +530,7 @@
 				C94A325F1A9E63D6004AD09C /* IAHPersistenceManager.m in Sources */,
 				C94A32951A9E6E2B004AD09C /* IAHRESTManager.m in Sources */,
 				C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */,
+				C92E469A1A9EA0E1008CF84A /* IAHLocationManager.m in Sources */,
 				C94A327A1A9E665F004AD09C /* IAHItineraryViewController.m in Sources */,
 				C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */,
 				C94A328A1A9E67C4004AD09C /* IAHUIManager.m in Sources */,

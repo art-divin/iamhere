@@ -9,6 +9,7 @@
 #import "IAHSearchViewController.h"
 #import "IAHTheme.h"
 #import "IAHObjectManager.h"
+#import "IAHLocationManager.h"
 
 @interface IAHSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -92,12 +93,19 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-	[IAHObjectManager fetchPlacesForQuery:searchBar.text
-								 callback:
-	 ^(NSArray *result, XTResponseError *error) {
-		 
-	 }];
-	[searchBar resignFirstResponder];
+	[IAHLocationManager fetchCurrentLocationWithSubscription:^(CLLocationCoordinate2D coordinate) {
+		if (CLLocationCoordinate2DIsValid(coordinate)) {
+			[IAHObjectManager fetchPlacesForQuery:searchBar.text
+									   coordinate:coordinate
+										 callback:
+			 ^(NSArray *result, XTResponseError *error) {
+				 
+			 }];
+			[searchBar resignFirstResponder];
+		} else {
+			// TODO: show an error
+		}
+	}];
 }
 
 @end

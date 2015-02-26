@@ -11,10 +11,14 @@
 
 @implementation IAHObjectManager
 
-+ (void)fetchPlacesForQuery:(NSString *)query callback:(void (^)(NSArray *, XTResponseError *))callback {
++ (void)fetchPlacesForQuery:(NSString *)query
+				 coordinate:(CLLocationCoordinate2D)coordinate
+				   callback:(void (^)(NSArray *, XTResponseError *))callback
+{
 	NSParameterAssert(query);
 	NSParameterAssert(callback);
 	[IAHRESTManager fetchPlacesForQuery:query
+							 atLocation:coordinate
 						completionBlock:
 	 ^(NSArray *result, XTResponseError *error) {
 		 
