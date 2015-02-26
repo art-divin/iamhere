@@ -13,6 +13,7 @@
 		C92E46911A9E8E3B008CF84A /* IAHRESTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46901A9E8E3B008CF84A /* IAHRESTConfiguration.m */; };
 		C92E46951A9E9A78008CF84A /* IAHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46941A9E9A78008CF84A /* IAHObjectManager.m */; };
 		C92E469A1A9EA0E1008CF84A /* IAHLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */; };
+		C92E46A61A9EA571008CF84A /* IAHRESTConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */; };
 		C94A322D1A9E620E004AD09C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322C1A9E620E004AD09C /* main.m */; };
 		C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322F1A9E620E004AD09C /* AppDelegate.m */; };
 		C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94A323A1A9E620E004AD09C /* Images.xcassets */; };
@@ -81,6 +82,7 @@
 		C92E46941A9E9A78008CF84A /* IAHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHObjectManager.m; path = services/objectManager/IAHObjectManager.m; sourceTree = "<group>"; };
 		C92E46981A9EA0E1008CF84A /* IAHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHLocationManager.h; sourceTree = "<group>"; };
 		C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHLocationManager.m; sourceTree = "<group>"; };
+		C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHRESTConfigurationTests.m; sourceTree = "<group>"; };
 		C94A32271A9E620E004AD09C /* iAmHERE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmHERE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94A322B1A9E620E004AD09C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94A322C1A9E620E004AD09C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				C94A32491A9E620E004AD09C /* iAmHERETests.m */,
 				C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */,
 				C94A32471A9E620E004AD09C /* Supporting Files */,
+				C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */,
 			);
 			path = iAmHERETests;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94A329A1A9E6E8B004AD09C /* IAHThemeTests.m in Sources */,
+				C92E46A61A9EA571008CF84A /* IAHRESTConfigurationTests.m in Sources */,
 				C94A324A1A9E620E004AD09C /* iAmHERETests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
