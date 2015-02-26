@@ -17,6 +17,8 @@
 		C92E46B11A9FA7A5008CF84A /* IAHPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46B01A9FA7A5008CF84A /* IAHPlace.m */; };
 		C92E46B61A9FAD62008CF84A /* IAHPlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46B51A9FAD62008CF84A /* IAHPlaceTests.m */; };
 		C92E46B81A9FB1C7008CF84A /* IAHPersistenceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46B71A9FB1C7008CF84A /* IAHPersistenceManagerTests.m */; };
+		C92E46C11A9FC62B008CF84A /* IAHItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46C01A9FC62B008CF84A /* IAHItinerary.m */; };
+		C92E46C51A9FC9B0008CF84A /* IAHRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46C41A9FC9B0008CF84A /* IAHRouteManager.m */; };
 		C94A322D1A9E620E004AD09C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322C1A9E620E004AD09C /* main.m */; };
 		C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322F1A9E620E004AD09C /* AppDelegate.m */; };
 		C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94A323A1A9E620E004AD09C /* Images.xcassets */; };
@@ -91,6 +93,10 @@
 		C92E46B41A9FA832008CF84A /* IAHMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHMapping.h; sourceTree = "<group>"; };
 		C92E46B51A9FAD62008CF84A /* IAHPlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHPlaceTests.m; sourceTree = "<group>"; };
 		C92E46B71A9FB1C7008CF84A /* IAHPersistenceManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHPersistenceManagerTests.m; sourceTree = "<group>"; };
+		C92E46BF1A9FC62B008CF84A /* IAHItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHItinerary.h; path = itinerary/IAHItinerary.h; sourceTree = "<group>"; };
+		C92E46C01A9FC62B008CF84A /* IAHItinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHItinerary.m; path = itinerary/IAHItinerary.m; sourceTree = "<group>"; };
+		C92E46C31A9FC9B0008CF84A /* IAHRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRouteManager.h; path = services/routeManager/IAHRouteManager.h; sourceTree = "<group>"; };
+		C92E46C41A9FC9B0008CF84A /* IAHRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRouteManager.m; path = services/routeManager/IAHRouteManager.m; sourceTree = "<group>"; };
 		C94A32271A9E620E004AD09C /* iAmHERE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmHERE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94A322B1A9E620E004AD09C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94A322C1A9E620E004AD09C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -190,6 +196,24 @@
 			path = place;
 			sourceTree = "<group>";
 		};
+		C92E46BC1A9FC615008CF84A /* itinerary */ = {
+			isa = PBXGroup;
+			children = (
+				C92E46BF1A9FC62B008CF84A /* IAHItinerary.h */,
+				C92E46C01A9FC62B008CF84A /* IAHItinerary.m */,
+			);
+			name = itinerary;
+			sourceTree = "<group>";
+		};
+		C92E46C21A9FC992008CF84A /* routeManager */ = {
+			isa = PBXGroup;
+			children = (
+				C92E46C31A9FC9B0008CF84A /* IAHRouteManager.h */,
+				C92E46C41A9FC9B0008CF84A /* IAHRouteManager.m */,
+			);
+			name = routeManager;
+			sourceTree = "<group>";
+		};
 		C94A321E1A9E620E004AD09C = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +283,7 @@
 		C94A32531A9E62D6004AD09C /* services */ = {
 			isa = PBXGroup;
 			children = (
+				C92E46C21A9FC992008CF84A /* routeManager */,
 				C92E46971A9EA0E1008CF84A /* location */,
 				C92E46921A9E9A60008CF84A /* objectManager */,
 				C94A32911A9E6DE5004AD09C /* networking */,
@@ -271,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E46B41A9FA832008CF84A /* IAHMapping.h */,
+				C92E46BC1A9FC615008CF84A /* itinerary */,
 				C92E46AE1A9FA7A5008CF84A /* place */,
 				C92E468E1A9E8E1D008CF84A /* configuration */,
 				C94A32591A9E637B004AD09C /* iAmHERE.xcdatamodeld */,
@@ -558,7 +584,9 @@
 				C94A327A1A9E665F004AD09C /* IAHItineraryViewController.m in Sources */,
 				C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */,
 				C94A328A1A9E67C4004AD09C /* IAHUIManager.m in Sources */,
+				C92E46C51A9FC9B0008CF84A /* IAHRouteManager.m in Sources */,
 				C94A32771A9E6640004AD09C /* IAHCustomViewController.m in Sources */,
+				C92E46C11A9FC62B008CF84A /* IAHItinerary.m in Sources */,
 				C94A328C1A9E6885004AD09C /* IAHTheme.m in Sources */,
 				C94A327D1A9E666E004AD09C /* IAHSearchViewController.m in Sources */,
 				C94A325B1A9E637B004AD09C /* iAmHERE.xcdatamodeld in Sources */,

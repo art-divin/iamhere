@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSNumber *averageRating;
 @property (nonatomic, strong) NSString *vicinity;
 @property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSNumber *idx;
 
 - (NSURL *)hrefURL;
 - (NSURL *)iconURL;

@@ -39,6 +39,7 @@
 @dynamic type;
 @dynamic iconURLStr;
 @dynamic href;
+@dynamic idx;
 
 #pragma mark - IAHMapping
 
