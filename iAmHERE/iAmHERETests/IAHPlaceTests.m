@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <XCTest/XCTest.h>
+#import "IAHPersistenceManager.h"
+#import "IAHPlace.h"
+
+@import XCTest;
 
 @interface IAHPlaceTests : XCTestCase
 
@@ -25,16 +27,46 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void)testPlaceHrefURLSuccess {
+	IAHPlace *place = [IAHPersistenceManager createObjectWithType:[IAHPlace class]];
+	NSDictionary *tempDic = @{ @"href" : @"http://example.com" };
+	[place deserializeWithDic:tempDic];
+	XCTAssertNotNil(place.hrefURL, @"nil URL returned");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testPlaceHrefURLFailure {
+	IAHPlace *place = [IAHPersistenceManager createObjectWithType:[IAHPlace class]];
+	NSDictionary *tempDic = @{ @"href" : @" " };
+	[place deserializeWithDic:tempDic];
+	XCTAssertNil(place.hrefURL, @"non-nil URL returned");
+}
+
+- (void)testPlaceIconURLSuccess {
+	IAHPlace *place = [IAHPersistenceManager createObjectWithType:[IAHPlace class]];
+	NSDictionary *tempDic = @{ @"icon" : @"http://example.com" };
+	[place deserializeWithDic:tempDic];
+	XCTAssertNotNil(place.iconURL, @"nil URL returned");
+}
+
+- (void)testPlaceIconURLFailure {
+	IAHPlace *place = [IAHPersistenceManager createObjectWithType:[IAHPlace class]];
+	NSDictionary *tempDic = @{ @"icon" : @" " };
+	[place deserializeWithDic:tempDic];
+	XCTAssertNil(place.iconURL, @"non-nil URL returned");
+}
+
+- (void)testPlaceLocationSuccess {
+	IAHPlace *place = [IAHPersistenceManager createObjectWithType:[IAHPlace class]];
+	NSDictionary *tempDic = @{ @"position" : @[ @0.0000, @0.0000 ] };
+	[place deserializeWithDic:tempDic];
+	XCTAssertNotNil(place.location, @"nil location returned");
+}
+
+- (void)testPlaceLocationFailure {
+	IAHPlace *place = [IAHPersistenceManager createObjectWithType:[IAHPlace class]];
+	NSDictionary *tempDic = @{ @"position" : @[] };
+	[place deserializeWithDic:tempDic];
+	XCTAssertNil(place.location, @"non-nil location returned");
 }
 
 @end
