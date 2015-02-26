@@ -99,6 +99,16 @@
 	return nil;
 }
 
++ (UIColor *)colorForCellTitle {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass colorForCellTitle];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return nil;
+}
+
 #pragma mark - Dimensions
 
 + (CGFloat)heightForTableViewCell {

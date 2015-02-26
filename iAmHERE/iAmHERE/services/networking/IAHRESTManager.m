@@ -82,7 +82,7 @@
 	NSParameterAssert(completionBlock);
 	XTOperationManager *opMan = [IAHRESTManager sharedManager].placesOperationManager;
 	NSString *locationStr = [NSString stringWithFormat:@"%f,%f;cgen=gps", coordinate.latitude, coordinate.longitude];
-	id urlQuery = [XTOperationManager URLQueryWithParams:@{ @"q" : query, @"at" : locationStr }];
+	id urlQuery = [XTOperationManager URLQueryWithParams:@{ @"q" : query, @"at" : locationStr, @"tf" : @"plain" }];
 	NSURLComponents *comps = [opMan URLComponents];
 	comps.path = [comps.path stringByAppendingString:@"/discover/search"];
 	if ([NSURLQueryItem class]) {

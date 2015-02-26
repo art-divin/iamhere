@@ -17,6 +17,7 @@
 	[[UISearchBar appearance] setBarTintColor:[IAHTheme colorForBarTint]];
 	[[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:[IAHTheme colorForButtonTitle]];
 	[[UITabBar appearance] setBarTintColor:[IAHTheme colorForBarTint]];
+	[[UITabBar appearance] setTranslucent:NO];
 	[[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [IAHTheme colorForButtonTitle] } forState:UIControlStateSelected];
 }
 
@@ -35,6 +36,10 @@
 }
 
 + (UIColor *)colorForBarTint {
+	return [IAHTheme colorFromHEX:0X15428C];
+}
+
++ (UIColor *)colorForCellTitle {
 	return [IAHTheme colorFromHEX:0X15428C];
 }
 

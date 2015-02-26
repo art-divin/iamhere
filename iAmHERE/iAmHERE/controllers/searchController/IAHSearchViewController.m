@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *resultArr;
 
 @end
 
@@ -36,19 +37,32 @@
 	self.tableView.separatorColor = [IAHTheme colorForViewTint];
 	[self.view addSubview:self.tableView];
 	[self.tableView setTranslatesAutoresizingMaskIntoConstraints:NO];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:kNilOptions metrics:nil views:@{ @"tableView" : self.tableView }]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:kNilOptions metrics:nil views:@{ @"tableView" : self.tableView }]];
 	self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
 	[self.searchBar setShowsCancelButton:YES];
 	self.searchBar.barStyle = UISearchBarStyleProminent;
 	self.searchBar.delegate = self;
-	self.tableView.tableHeaderView = self.searchBar;
+	[self.view addSubview:self.searchBar];
+	[self.searchBar setTranslatesAutoresizingMaskIntoConstraints:NO];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
+																	  options:kNilOptions
+																	  metrics:nil
+																		views:@{ @"tableView" : self.tableView }]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[searchBar(==height)][tableView]|"
+																	  options:kNilOptions
+																	  metrics:@{ @"height" : @([IAHTheme heightForTableViewCell]) }
+																		views:@{ @"searchBar" : self.searchBar,
+																				 @"tableView" : self.tableView }]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[searchBar]|"
+																	  options:kNilOptions
+																	  metrics:nil
+																		views:@{ @"searchBar" : self.searchBar }]];
+	[IAHLocationManager fetchCurrentLocationWithSubscription:^(CLLocationCoordinate2D coordinate) {
+		// no-op
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	CGRect frame = self.view.frame;
-	self.searchBar.frame = CGRectMake(0, 0, CGRectGetWidth(frame), [IAHTheme heightForTableViewCell]);
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -67,15 +81,55 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 0;
+	return self.resultArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// TODO: custom cell impl
-	return nil;
+	static NSString *cellID = @"cellID";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+	if (!cell) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+	}
+	IAHPlace *place = self.resultArr[indexPath.row];
+	NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+	paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+	NSDictionary *attrDic = @{ NSForegroundColorAttributeName : [IAHTheme colorForCellTitle],
+							   NSParagraphStyleAttributeName : paragraph };
+	NSAttributedString *titleAttrStr = [[NSAttributedString alloc] initWithString:place.title
+																	   attributes:attrDic];
+	NSAttributedString *vicinityAttrStr = [[NSAttributedString alloc] initWithString:place.vicinity
+																		  attributes:attrDic];
+	cell.textLabel.numberOfLines = 0;
+	cell.detailTextLabel.numberOfLines = 0;
+	cell.textLabel.attributedText = titleAttrStr;
+	cell.detailTextLabel.attributedText = vicinityAttrStr;
+	return cell;
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	IAHPlace *place = self.resultArr[indexPath.row];
+	NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+	paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+	NSDictionary *attrDic = @{ NSForegroundColorAttributeName : [IAHTheme colorForCellTitle],
+							   NSParagraphStyleAttributeName : paragraph };
+	NSAttributedString *titleAttrStr = [[NSAttributedString alloc] initWithString:place.title
+																	   attributes:attrDic];
+	NSAttributedString *vicinityAttrStr = [[NSAttributedString alloc] initWithString:place.vicinity
+																		  attributes:attrDic];
+	CGFloat width = CGRectGetWidth(tableView.frame) - tableView.separatorInset.left;
+	CGRect rect = [titleAttrStr boundingRectWithSize:(CGSize){ .width = width, .height = CGFLOAT_MAX }
+											 options:NSStringDrawingUsesLineFragmentOrigin
+											 context:nil];
+	CGRect rect2 = [vicinityAttrStr boundingRectWithSize:(CGSize){ .width = width, .height = CGFLOAT_MAX }
+												 options:NSStringDrawingUsesLineFragmentOrigin
+												 context:nil];
+	CGFloat height = ceil(CGRectGetHeight(rect));
+	height += ceil(CGRectGetHeight(rect2));
+	height = MAX(height, [IAHTheme heightForTableViewCell]);
+	return height + [IAHTheme heightForTableViewCell];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -84,28 +138,40 @@
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-	// TODO: send search suggestion query
+	if (searchText.length == 0) {
+		self.resultArr = nil;
+		[self.tableView reloadData];
+	}
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-	
 	[searchBar resignFirstResponder];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+	__weak typeof(self) weakSelf = self;
 	[IAHLocationManager fetchCurrentLocationWithSubscription:^(CLLocationCoordinate2D coordinate) {
 		if (CLLocationCoordinate2DIsValid(coordinate)) {
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 			[IAHObjectManager fetchPlacesForQuery:searchBar.text
 									   coordinate:coordinate
 										 callback:
 			 ^(NSArray *result, XTResponseError *error) {
-				 
+				 dispatch_async(dispatch_get_main_queue(), ^{
+					 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+					 if (error) {
+						 // TODO: show error dialog
+					 } else {
+						 weakSelf.resultArr = result;
+						 [weakSelf.tableView reloadData];
+					 }
+				 });
 			 }];
-			[searchBar resignFirstResponder];
 		} else {
 			// TODO: show an error
 		}
 	}];
+	[searchBar resignFirstResponder];
 }
 
 @end

@@ -19,6 +19,7 @@
 + (UIColor *)colorForViewTint;
 + (UIColor *)colorForButtonTitle;
 + (UIColor *)colorForBarTint;
++ (UIColor *)colorForCellTitle;
 
 // dimensions
 + (CGFloat)heightForTableViewCell;
