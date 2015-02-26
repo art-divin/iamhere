@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="IAHPlace" representedClassName="IAHPlace" syncable="YES">
+        <attribute name="averageRating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="href" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconURLStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vicinity" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="IAHPlace" positionX="-4608" positionY="-3168" width="128" height="193"/>
+    </elements>
 </model>

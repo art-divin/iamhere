@@ -14,6 +14,9 @@
 		C92E46951A9E9A78008CF84A /* IAHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46941A9E9A78008CF84A /* IAHObjectManager.m */; };
 		C92E469A1A9EA0E1008CF84A /* IAHLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */; };
 		C92E46A61A9EA571008CF84A /* IAHRESTConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */; };
+		C92E46B11A9FA7A5008CF84A /* IAHPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46B01A9FA7A5008CF84A /* IAHPlace.m */; };
+		C92E46B61A9FAD62008CF84A /* IAHPlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46B51A9FAD62008CF84A /* IAHPlaceTests.m */; };
+		C92E46B81A9FB1C7008CF84A /* IAHPersistenceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E46B71A9FB1C7008CF84A /* IAHPersistenceManagerTests.m */; };
 		C94A322D1A9E620E004AD09C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322C1A9E620E004AD09C /* main.m */; };
 		C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322F1A9E620E004AD09C /* AppDelegate.m */; };
 		C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94A323A1A9E620E004AD09C /* Images.xcassets */; };
@@ -83,6 +86,11 @@
 		C92E46981A9EA0E1008CF84A /* IAHLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHLocationManager.h; sourceTree = "<group>"; };
 		C92E46991A9EA0E1008CF84A /* IAHLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHLocationManager.m; sourceTree = "<group>"; };
 		C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHRESTConfigurationTests.m; sourceTree = "<group>"; };
+		C92E46AF1A9FA7A5008CF84A /* IAHPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHPlace.h; sourceTree = "<group>"; };
+		C92E46B01A9FA7A5008CF84A /* IAHPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHPlace.m; sourceTree = "<group>"; };
+		C92E46B41A9FA832008CF84A /* IAHMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHMapping.h; sourceTree = "<group>"; };
+		C92E46B51A9FAD62008CF84A /* IAHPlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHPlaceTests.m; sourceTree = "<group>"; };
+		C92E46B71A9FB1C7008CF84A /* IAHPersistenceManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHPersistenceManagerTests.m; sourceTree = "<group>"; };
 		C94A32271A9E620E004AD09C /* iAmHERE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmHERE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94A322B1A9E620E004AD09C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94A322C1A9E620E004AD09C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -173,6 +181,15 @@
 			path = services/location;
 			sourceTree = "<group>";
 		};
+		C92E46AE1A9FA7A5008CF84A /* place */ = {
+			isa = PBXGroup;
+			children = (
+				C92E46AF1A9FA7A5008CF84A /* IAHPlace.h */,
+				C92E46B01A9FA7A5008CF84A /* IAHPlace.m */,
+			);
+			path = place;
+			sourceTree = "<group>";
+		};
 		C94A321E1A9E620E004AD09C = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +242,8 @@
 				C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */,
 				C94A32471A9E620E004AD09C /* Supporting Files */,
 				C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */,
+				C92E46B51A9FAD62008CF84A /* IAHPlaceTests.m */,
+				C92E46B71A9FB1C7008CF84A /* IAHPersistenceManagerTests.m */,
 			);
 			path = iAmHERETests;
 			sourceTree = "<group>";
@@ -251,6 +270,8 @@
 		C94A32581A9E637B004AD09C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C92E46B41A9FA832008CF84A /* IAHMapping.h */,
+				C92E46AE1A9FA7A5008CF84A /* place */,
 				C92E468E1A9E8E1D008CF84A /* configuration */,
 				C94A32591A9E637B004AD09C /* iAmHERE.xcdatamodeld */,
 			);
@@ -541,6 +562,7 @@
 				C94A328C1A9E6885004AD09C /* IAHTheme.m in Sources */,
 				C94A327D1A9E666E004AD09C /* IAHSearchViewController.m in Sources */,
 				C94A325B1A9E637B004AD09C /* iAmHERE.xcdatamodeld in Sources */,
+				C92E46B11A9FA7A5008CF84A /* IAHPlace.m in Sources */,
 				C94A322D1A9E620E004AD09C /* main.m in Sources */,
 				C92E46911A9E8E3B008CF84A /* IAHRESTConfiguration.m in Sources */,
 				C92E46951A9E9A78008CF84A /* IAHObjectManager.m in Sources */,
@@ -551,6 +573,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92E46B61A9FAD62008CF84A /* IAHPlaceTests.m in Sources */,
+				C92E46B81A9FB1C7008CF84A /* IAHPersistenceManagerTests.m in Sources */,
 				C94A329A1A9E6E8B004AD09C /* IAHThemeTests.m in Sources */,
 				C92E46A61A9EA571008CF84A /* IAHRESTConfigurationTests.m in Sources */,
 				C94A324A1A9E620E004AD09C /* iAmHERETests.m in Sources */,
