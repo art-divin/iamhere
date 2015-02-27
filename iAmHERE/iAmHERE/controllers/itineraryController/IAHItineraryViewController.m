@@ -10,6 +10,7 @@
 #import "IAHTheme.h"
 #import "IAHRouteManager.h"
 #import "IAHPlace.h"
+#import "IAHAssetsManager.h"
 
 @interface IAHItineraryViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +25,7 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
 		self.title = NSLocalizedString(@"controllers.itinerary.title", @"Title of the itinerary view");
+		self.tabBarItem.image = [IAHAssetsManager imageForTabBarItinerary];
 	}
 	return self;
 }
