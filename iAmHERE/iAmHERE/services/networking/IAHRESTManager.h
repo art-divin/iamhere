@@ -15,4 +15,8 @@
 				 atLocation:(CLLocationCoordinate2D)coordinate
 			completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock;
 
++ (void)fetchRouteForLocations:(NSArray *)locArr
+				 transportType:(NSString *)transportType
+			   completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock;
+
 @end

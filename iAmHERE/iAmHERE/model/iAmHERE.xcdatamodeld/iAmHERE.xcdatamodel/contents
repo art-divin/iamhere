@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="IAHItinerary" representedClassName="IAHItinerary" syncable="YES">
+        <relationship name="legs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IAHRouteLeg" inverseName="itinerary" inverseEntity="IAHRouteLeg" syncable="YES"/>
         <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IAHPlace" inverseName="itinerary" inverseEntity="IAHPlace" syncable="YES"/>
+        <relationship name="summary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IAHRouteSummary" inverseName="itinerary" inverseEntity="IAHRouteSummary" syncable="YES"/>
     </entity>
     <entity name="IAHPlace" representedClassName="IAHPlace" syncable="YES">
         <attribute name="averageRating" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -17,8 +19,36 @@
         <attribute name="vicinity" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IAHItinerary" inverseName="places" inverseEntity="IAHItinerary" syncable="YES"/>
     </entity>
+    <entity name="IAHRouteLeg" representedClassName="IAHRouteLeg" syncable="YES">
+        <attribute name="idx" attributeType="Integer 64" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="travelTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IAHItinerary" inverseName="legs" inverseEntity="IAHItinerary" syncable="YES"/>
+        <relationship name="maneuvers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IAHRouteManeuver" inverseName="leg" inverseEntity="IAHRouteManeuver" syncable="YES"/>
+    </entity>
+    <entity name="IAHRouteManeuver" representedClassName="IAHRouteManeuver" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="idx" attributeType="Integer 64" syncable="YES"/>
+        <attribute name="instruction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" syncable="YES"/>
+        <attribute name="travelTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="leg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IAHRouteLeg" inverseName="maneuvers" inverseEntity="IAHRouteLeg" syncable="YES"/>
+    </entity>
+    <entity name="IAHRouteSummary" representedClassName="IAHRouteSummary" syncable="YES">
+        <attribute name="baseTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trafficTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="travelTime" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IAHItinerary" inverseName="summary" inverseEntity="IAHItinerary" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="IAHItinerary" positionX="-4826" positionY="-3168" width="128" height="88"/>
         <element name="IAHPlace" positionX="-4608" positionY="-3168" width="128" height="223"/>
-        <element name="IAHItinerary" positionX="-4826" positionY="-3168" width="128" height="58"/>
+        <element name="IAHRouteManeuver" positionX="-4610" positionY="-3348" width="128" height="163"/>
+        <element name="IAHRouteLeg" positionX="-4799" positionY="-3349" width="128" height="118"/>
+        <element name="IAHRouteSummary" positionX="-4788" positionY="-2941" width="128" height="133"/>
     </elements>
 </model>

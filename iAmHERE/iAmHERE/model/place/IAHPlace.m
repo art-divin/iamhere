@@ -47,9 +47,11 @@
 - (void)deserializeWithDic:(NSDictionary *)dic {
 	self.identifier = dic[kFieldIdentifier] ?: self.identifier;
 	NSArray *locationArr = dic[kFieldPosition];
-	if (locationArr.count == 2) {
-		self.latitude = locationArr[0];
-		self.longitude = locationArr[1];
+	if ([locationArr isKindOfClass:[NSArray class]]) {
+		if (locationArr.count == 2) {
+			self.latitude = [locationArr firstObject];
+			self.longitude = [locationArr lastObject];
+		}
 	}
 	self.distance = dic[kFieldDistance] ?: self.distance;
 	self.title = dic[kFieldTitle] ?: self.title;

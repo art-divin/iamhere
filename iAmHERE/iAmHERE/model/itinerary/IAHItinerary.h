@@ -11,11 +11,16 @@
 @import CoreData;
 
 @class IAHPlace;
+@class IAHRouteSummary;
+@class IAHRouteLeg;
 
 @interface IAHItinerary : NSManagedObject <IAHMapping>
 
 @property (nonatomic, strong) NSSet *places;
+@property (nonatomic, strong) IAHRouteSummary *summary;
+@property (nonatomic, strong) NSSet *legs;
 
+- (NSArray *)sortedLegs;
 - (NSArray *)sortedPlaces;
 
 @end
@@ -26,5 +31,10 @@
 - (void)removePlacesObject:(IAHPlace *)value;
 - (void)addPlaces:(NSSet *)values;
 - (void)removePlaces:(NSSet *)values;
+
+- (void)addLegsObject:(IAHRouteLeg *)value;
+- (void)removeLegsObject:(IAHRouteLeg *)value;
+- (void)addLegs:(NSSet *)values;
+- (void)removeLegs:(NSSet *)values;
 
 @end

@@ -10,6 +10,7 @@
 #import "IAHPersistenceManager.h"
 #import "IAHItinerary.h"
 #import "IAHPlace.h"
+#import "IAHRESTManager.h"
 
 @interface IAHRouteManager ()
 
@@ -55,6 +56,28 @@
 	NSNumber *idx = place.idx;
 	place.idx = withPlace.idx;
 	withPlace.idx = idx;
+}
+
+- (void)calculateRoute:(void (^)(IAHItinerary *, NSError *))callback {
+	NSArray *locationArr = [self.itinerary valueForKeyPath:@"sortedPlaces.location"];
+	__weak typeof(self) weakSelf = self;
+	[IAHRESTManager fetchRouteForLocations:locationArr
+							 transportType:@"car"
+						   completionBlock:
+	 ^(NSArray *routeArr, XTResponseError *error) {
+		 if (!error) {
+			 if (routeArr.count > 0) {
+				 // TODO: consider more than 1 route
+				 [weakSelf.itinerary deserializeWithDic:[routeArr firstObject]];
+				 [weakSelf saveWithCallback:^(NSError *error) {
+					 callback(weakSelf.itinerary, error);
+				 }];
+			 }
+		 } else {
+			 // TODO: show error
+			 callback(nil, error);
+		 }
+	 }];
 }
 
 - (void)saveWithCallback:(void (^)(NSError *))callback {

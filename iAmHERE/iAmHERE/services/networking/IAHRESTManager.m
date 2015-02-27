@@ -14,6 +14,8 @@
 #define kFieldConfigType		@"plist"
 #define kFieldResults			@"results"
 #define kFieldItems				@"items"
+#define kFieldResponse			@"response"
+#define kFieldRoute				@"route"
 
 @interface IAHRESTManager ()
 
@@ -82,7 +84,10 @@
 	NSParameterAssert(completionBlock);
 	XTOperationManager *opMan = [IAHRESTManager sharedManager].placesOperationManager;
 	NSString *locationStr = [NSString stringWithFormat:@"%f,%f;cgen=gps", coordinate.latitude, coordinate.longitude];
-	id urlQuery = [XTOperationManager URLQueryWithParams:@{ @"q" : query, @"at" : locationStr, @"tf" : @"plain" }];
+	id urlQuery = [XTOperationManager URLQueryWithParams:@{ @"q" : query,
+															@"at" : locationStr,
+															@"tf" : @"plain",
+															@"pretty" : @"true" }];
 	NSURLComponents *comps = [opMan URLComponents];
 	comps.path = [comps.path stringByAppendingString:@"/discover/search"];
 	if ([NSURLQueryItem class]) {
@@ -114,13 +119,91 @@
 											 return;
 										 }
 										 NSDictionary *resultsDic = resultDic[kFieldResults];
-										 if (![resultDic isKindOfClass:[NSDictionary class]]) {
+										 if (![resultsDic isKindOfClass:[NSDictionary class]]) {
 											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
 											 completionBlock(nil, error);
 											 return;
 										 }
 										 NSArray *itemArr = resultsDic[kFieldItems];
+										 if (![itemArr isKindOfClass:[NSArray class]]) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
 										 completionBlock(itemArr, nil);
+									 }];
+	[opMan scheduleOperation:operation];
+}
+
++ (void)fetchRouteForLocations:(NSArray *)locArr
+				 transportType:(NSString *)transportType
+			   completionBlock:(void (^)(NSArray *, XTResponseError *))completionBlock
+{
+	NSParameterAssert(locArr.count);
+	NSParameterAssert(completionBlock);
+	NSParameterAssert(transportType);
+	XTOperationManager *opMan = [IAHRESTManager sharedManager].routeOperationManager;
+	NSString *appID = [IAHRESTManager sharedManager].routeConfiguration.appID;
+	NSString *appCode = [IAHRESTManager sharedManager].routeConfiguration.appCode;
+	NSString *modeStr = [NSString stringWithFormat:@"fastest;%@;traffic:disabled", transportType];
+	NSMutableDictionary *queryDic = [@{ @"tf" : @"plain",
+										@"pretty" : @"true",
+										@"mode" : modeStr,
+										@"app_id" : appID,
+										@"app_code" : appCode } mutableCopy];
+	NSMutableString *keyStr = [NSMutableString new];
+	NSMutableString *valueStr = [NSMutableString new];
+	[locArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[keyStr setString:@""];
+		[valueStr setString:@""];
+		CLLocation *location = obj;
+		[keyStr appendFormat:@"waypoint%lu", (unsigned long)idx];
+		[valueStr appendFormat:@"geo!%f,%f", location.coordinate.latitude, location.coordinate.longitude];
+		queryDic[[keyStr copy]] = [valueStr copy];
+	}];
+	id urlQuery = [XTOperationManager URLQueryWithParams:queryDic];
+	NSURLComponents *comps = [opMan URLComponents];
+	comps.path = [comps.path stringByAppendingString:@"/calculateroute.json"];
+	if ([NSURLQueryItem class]) {
+		comps.queryItems = urlQuery;
+	} else {
+		comps.query = urlQuery;
+	}
+	XTRequestOperation *operation = [XTRequestOperation operationWithURL:[comps URL]
+																	type:XTOperationTypeGET
+																 dataDic:nil
+															   headerDic:nil
+															 contentType:@"application/json"
+															 finishBlock:
+									 ^(NSDictionary *resultDic, NSDictionary *headerDic, NSError *error) {
+										 if (error) {
+											 XTResponseError *err = [XTResponseError errorWithCode:error.code message:error.localizedDescription];
+											 completionBlock(nil, err);
+											 return;
+										 }
+										 if (!resultDic) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.empty", @"Empty response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 if (![resultDic isKindOfClass:[NSDictionary class]]) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 NSDictionary *responseDic = resultDic[kFieldResponse];
+										 if (![responseDic isKindOfClass:[NSDictionary class]]) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 NSArray *routeArr = responseDic[kFieldRoute];
+										 if (![routeArr isKindOfClass:[NSArray class]]) {
+											 XTResponseError *error = [XTResponseError errorWithCode:0 message:NSLocalizedString(@"errors.response.invalid", @"Invalid response error message")];
+											 completionBlock(nil, error);
+											 return;
+										 }
+										 completionBlock(routeArr, nil);
 									 }];
 	[opMan scheduleOperation:operation];
 }
