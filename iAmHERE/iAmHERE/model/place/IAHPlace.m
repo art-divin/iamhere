@@ -17,6 +17,7 @@
 #define kFieldType			@"type"
 #define kFieldHref			@"href"
 #define kFieldIdentifier	@"id"
+#define kFieldIndex			@"idx"
 
 @interface IAHPlace ()
 
@@ -60,6 +61,7 @@
 	self.type = dic[kFieldType] ?: self.type;
 	self.iconURLStr = dic[kFieldIcon] ?: self.iconURLStr;
 	self.href = dic[kFieldHref] ?: self.href;
+	self.idx = dic[kFieldIndex] ?: self.idx;
 }
 
 #pragma mark - accessors

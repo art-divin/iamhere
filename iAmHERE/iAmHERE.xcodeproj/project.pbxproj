@@ -23,7 +23,6 @@
 		C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A322F1A9E620E004AD09C /* AppDelegate.m */; };
 		C94A323B1A9E620E004AD09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94A323A1A9E620E004AD09C /* Images.xcassets */; };
 		C94A323E1A9E620E004AD09C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A323C1A9E620E004AD09C /* LaunchScreen.xib */; };
-		C94A324A1A9E620E004AD09C /* iAmHERETests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32491A9E620E004AD09C /* iAmHERETests.m */; };
 		C94A325B1A9E637B004AD09C /* iAmHERE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C94A32591A9E637B004AD09C /* iAmHERE.xcdatamodeld */; };
 		C94A325F1A9E63D6004AD09C /* IAHPersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A325E1A9E63D6004AD09C /* IAHPersistenceManager.m */; };
 		C94A326F1A9E644E004AD09C /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94A326A1A9E643C004AD09C /* Networking.framework */; };
@@ -40,6 +39,8 @@
 		C9F8C7031A9FF91800EDB49C /* IAHRouteManeuver.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6FE1A9FF91800EDB49C /* IAHRouteManeuver.m */; };
 		C9F8C7041A9FF91800EDB49C /* IAHRouteSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C7011A9FF91800EDB49C /* IAHRouteSummary.m */; };
 		C9F8C70F1A9FFBBF00EDB49C /* IAHAssetsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C70E1A9FFBBF00EDB49C /* IAHAssetsManager.m */; };
+		C9F8C7161AA003EB00EDB49C /* IAHItineraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C7151AA003EB00EDB49C /* IAHItineraryTests.m */; };
+		C9F8C71A1AA00AF600EDB49C /* IAHRouteManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C7191AA00AF600EDB49C /* IAHRouteManagerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +111,6 @@
 		C94A323D1A9E620E004AD09C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C94A32431A9E620E004AD09C /* iAmHERETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iAmHERETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94A32481A9E620E004AD09C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C94A32491A9E620E004AD09C /* iAmHERETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iAmHERETests.m; sourceTree = "<group>"; };
 		C94A325A1A9E637B004AD09C /* iAmHERE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iAmHERE.xcdatamodel; sourceTree = "<group>"; };
 		C94A325D1A9E63D6004AD09C /* IAHPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHPersistenceManager.h; sourceTree = "<group>"; };
 		C94A325E1A9E63D6004AD09C /* IAHPersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHPersistenceManager.m; sourceTree = "<group>"; };
@@ -140,6 +140,8 @@
 		C9F8C7011A9FF91800EDB49C /* IAHRouteSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHRouteSummary.m; sourceTree = "<group>"; };
 		C9F8C70D1A9FFBBF00EDB49C /* IAHAssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHAssetsManager.h; sourceTree = "<group>"; };
 		C9F8C70E1A9FFBBF00EDB49C /* IAHAssetsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHAssetsManager.m; sourceTree = "<group>"; };
+		C9F8C7151AA003EB00EDB49C /* IAHItineraryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHItineraryTests.m; sourceTree = "<group>"; };
+		C9F8C7191AA00AF600EDB49C /* IAHRouteManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHRouteManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,12 +278,13 @@
 		C94A32461A9E620E004AD09C /* iAmHERETests */ = {
 			isa = PBXGroup;
 			children = (
-				C94A32491A9E620E004AD09C /* iAmHERETests.m */,
-				C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */,
-				C94A32471A9E620E004AD09C /* Supporting Files */,
+				C9F8C7191AA00AF600EDB49C /* IAHRouteManagerTests.m */,
 				C92E46A51A9EA571008CF84A /* IAHRESTConfigurationTests.m */,
 				C92E46B51A9FAD62008CF84A /* IAHPlaceTests.m */,
 				C92E46B71A9FB1C7008CF84A /* IAHPersistenceManagerTests.m */,
+				C9F8C7151AA003EB00EDB49C /* IAHItineraryTests.m */,
+				C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */,
+				C94A32471A9E620E004AD09C /* Supporting Files */,
 			);
 			path = iAmHERETests;
 			sourceTree = "<group>";
@@ -660,11 +663,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F8C71A1AA00AF600EDB49C /* IAHRouteManagerTests.m in Sources */,
 				C92E46B61A9FAD62008CF84A /* IAHPlaceTests.m in Sources */,
 				C92E46B81A9FB1C7008CF84A /* IAHPersistenceManagerTests.m in Sources */,
+				C9F8C7161AA003EB00EDB49C /* IAHItineraryTests.m in Sources */,
 				C94A329A1A9E6E8B004AD09C /* IAHThemeTests.m in Sources */,
 				C92E46A61A9EA571008CF84A /* IAHRESTConfigurationTests.m in Sources */,
-				C94A324A1A9E620E004AD09C /* iAmHERETests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
