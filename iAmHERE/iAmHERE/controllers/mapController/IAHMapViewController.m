@@ -17,6 +17,8 @@
 @interface IAHMapAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property (nonatomic, assign, getter = isStart) BOOL start;
+@property (nonatomic, assign, getter = isEnd) BOOL end;
 
 @end
 
@@ -64,9 +66,15 @@
 				 NSMutableArray *annotationArr = [NSMutableArray new];
 				 [weakSelf.mapView removeAnnotations:weakSelf.mapView.annotations];
 				 [weakSelf.mapView removeOverlays:weakSelf.mapView.overlays];
+				 NSUInteger placeCount = placeArr.count;
 				 [placeArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 					 IAHPlace *place = obj;
 					 IAHMapAnnotation *annotaion = [IAHMapAnnotation new];
+					 if (idx == 0) {
+						 annotaion.start = YES;
+					 } else if (idx == placeCount - 1) {
+						 annotaion.end = YES;
+					 }
 					 annotaion.coordinate = place.location.coordinate;
 					 [annotationArr addObject:annotaion];
 				 }];
@@ -106,21 +114,35 @@
 #pragma mark - MKMapViewDelegate
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
-	MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
-	polylineView.strokeColor = [IAHTheme colorForPolyline];
-	polylineView.lineWidth = [IAHTheme widthForPolyline];
-	return polylineView;
+	if ([overlay isKindOfClass:[MKPolyline class]]) {
+		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
+		polylineView.strokeColor = [IAHTheme colorForPolyline];
+		polylineView.lineWidth = [IAHTheme widthForPolyline];
+		return polylineView;
+	}
+	return nil;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-	static NSString * const annotationID = @"FNMapAnnotation";
+	static NSString * const annotationID = @"IAHMapAnnotation";
 	MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationID];
 	if (!view) {
 		view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationID];
 	}
 	view.canShowCallout = NO;
 	view.animatesDrop = YES;
-	view.pinColor = MKPinAnnotationColorPurple;
+	if ([annotation isKindOfClass:[IAHMapAnnotation class]]) {
+		IAHMapAnnotation *ann = annotation;
+		if (ann.isStart) {
+			view.pinColor = MKPinAnnotationColorGreen;
+		} else if (ann.isEnd) {
+			view.pinColor = MKPinAnnotationColorRed;
+		} else {
+			view.pinColor = MKPinAnnotationColorPurple;
+		}
+	} else {
+		view.pinColor = MKPinAnnotationColorPurple;
+	}
 	return view;
 }
 
