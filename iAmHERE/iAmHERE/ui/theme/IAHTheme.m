@@ -141,4 +141,14 @@
 	return 0.0f;
 }
 
++ (CGFloat)animationDuration {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass animationDuration];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return 0.0f;
+}
+
 @end

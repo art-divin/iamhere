@@ -22,7 +22,8 @@
 - (void)addPlace:(IAHPlace *)place;
 - (void)removePlace:(IAHPlace *)place;
 - (void)exchangePlace:(IAHPlace *)place withPlace:(IAHPlace *)withPlace;
-- (void)calculateRoute:(void (^)(IAHItinerary *, NSError *))callback;
+- (void)calculateRouteForTransportType:(NSString *)type
+							  callback:(void (^)(IAHItinerary *, NSError *))callback;
 
 - (void)saveWithCallback:(void (^)(NSError *))callback;
 
