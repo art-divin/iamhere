@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  IAHSearchViewController.h
 //  iAmHERE
 //
 //  Created by Ruslan Alikhamov on 25/02/15.
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "IAHCustomViewController.h"
 
-@interface ViewController : UIViewController
-
+@interface IAHSearchViewController : IAHCustomViewController
 
 @end
-

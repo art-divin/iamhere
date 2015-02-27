@@ -1,19 +1,18 @@
 //
-//  iAmHERETests.m
-//  iAmHERETests
+//  NetworkingTests.m
+//  NetworkingTests
 //
-//  Created by Ruslan Alikhamov on 25/02/15.
+//  Created by Ruslan Alikhamov on 08/01/15.
 //  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
+@import XCTest;
 
-@interface iAmHERETests : XCTestCase
+@interface NetworkingTests : XCTestCase
 
 @end
 
-@implementation iAmHERETests
+@implementation NetworkingTests
 
 - (void)setUp {
     [super setUp];

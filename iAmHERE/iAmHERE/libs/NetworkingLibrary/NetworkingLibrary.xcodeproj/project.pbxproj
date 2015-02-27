@@ -1,0 +1,659 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C95920041A34ED4D00EDB98B /* NetworkingLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C95920031A34ED4D00EDB98B /* NetworkingLibrary.h */; };
+		C95920201A34ED9300EDB98B /* XTOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C959201E1A34ED9300EDB98B /* XTOperationManager.m */; };
+		C95920231A34F08400EDB98B /* XTOperationManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C959201D1A34ED9300EDB98B /* XTOperationManager.h */; };
+		C95920241A34F08400EDB98B /* XTGlobals.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C95920211A34EEB800EDB98B /* XTGlobals.h */; };
+		C959202C1A34F19300EDB98B /* XTOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C959201D1A34ED9300EDB98B /* XTOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C959202D1A34F19300EDB98B /* NetworkingLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = C95920031A34ED4D00EDB98B /* NetworkingLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C959202E1A34F19300EDB98B /* XTGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = C95920211A34EEB800EDB98B /* XTGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C970E3661A6BF912004EF36D /* XTLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C970E3641A6BF912004EF36D /* XTLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C970E3671A6BF912004EF36D /* XTLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C970E3651A6BF912004EF36D /* XTLogger.m */; };
+		C970E3681A6BFE23004EF36D /* XTLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C970E3641A6BF912004EF36D /* XTLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C970E3691A6BFE7C004EF36D /* XTLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C970E3651A6BF912004EF36D /* XTLogger.m */; };
+		C9B35B371A5E89B700FEF93E /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B361A5E89B700FEF93E /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B3D1A5E89B700FEF93E /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B35B321A5E89B600FEF93E /* Networking.framework */; };
+		C9B35B441A5E89B700FEF93E /* NetworkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B431A5E89B700FEF93E /* NetworkingTests.m */; };
+		C9B35B571A5E8A6700FEF93E /* XTRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B551A5E8A6700FEF93E /* XTRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B591A5E8A6700FEF93E /* XTRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B561A5E8A6700FEF93E /* XTRequestOperation.m */; };
+		C9B35B5A1A5E8A6700FEF93E /* XTRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B561A5E8A6700FEF93E /* XTRequestOperation.m */; };
+		C9B35B5D1A5E8A9900FEF93E /* XTOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C959201E1A34ED9300EDB98B /* XTOperationManager.m */; };
+		C9B35B5E1A5E8C5D00FEF93E /* XTOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C959201D1A34ED9300EDB98B /* XTOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B5F1A5E8C6900FEF93E /* XTGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = C95920211A34EEB800EDB98B /* XTGlobals.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B601A5E8CB600FEF93E /* XTRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B551A5E8A6700FEF93E /* XTRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B641A5E8DFB00FEF93E /* XTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B621A5E8DFB00FEF93E /* XTConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B651A5E8DFB00FEF93E /* XTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B621A5E8DFB00FEF93E /* XTConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B661A5E8DFB00FEF93E /* XTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B631A5E8DFB00FEF93E /* XTConfiguration.m */; };
+		C9B35B671A5E8DFB00FEF93E /* XTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B631A5E8DFB00FEF93E /* XTConfiguration.m */; };
+		C9B35B6A1A5E950900FEF93E /* XTConfigurationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B681A5E950900FEF93E /* XTConfigurationInternal.h */; };
+		C9B35B6B1A5E950900FEF93E /* XTConfigurationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B681A5E950900FEF93E /* XTConfigurationInternal.h */; };
+		C9B35B6C1A5E950900FEF93E /* XTConfigurationInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B691A5E950900FEF93E /* XTConfigurationInternal.m */; };
+		C9B35B6D1A5E950900FEF93E /* XTConfigurationInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B691A5E950900FEF93E /* XTConfigurationInternal.m */; };
+		C9B35B711A5E980000FEF93E /* XTResponseError.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B6F1A5E980000FEF93E /* XTResponseError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B721A5E980000FEF93E /* XTResponseError.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B35B6F1A5E980000FEF93E /* XTResponseError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9B35B731A5E980000FEF93E /* XTResponseError.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B701A5E980000FEF93E /* XTResponseError.m */; };
+		C9B35B741A5E980000FEF93E /* XTResponseError.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B35B701A5E980000FEF93E /* XTResponseError.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9B35B3E1A5E89B700FEF93E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9591FF81A34ED4D00EDB98B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9B35B311A5E89B600FEF93E;
+			remoteInfo = Networking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9591FFE1A34ED4D00EDB98B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 7;
+			files = (
+				C95920231A34F08400EDB98B /* XTOperationManager.h in CopyFiles */,
+				C95920241A34F08400EDB98B /* XTGlobals.h in CopyFiles */,
+				C95920041A34ED4D00EDB98B /* NetworkingLibrary.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C95920001A34ED4D00EDB98B /* NetworkingLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = NetworkingLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C95920031A34ED4D00EDB98B /* NetworkingLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingLibrary.h; sourceTree = "<group>"; };
+		C959201D1A34ED9300EDB98B /* XTOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTOperationManager.h; sourceTree = "<group>"; };
+		C959201E1A34ED9300EDB98B /* XTOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTOperationManager.m; sourceTree = "<group>"; };
+		C95920211A34EEB800EDB98B /* XTGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTGlobals.h; sourceTree = "<group>"; };
+		C970E3641A6BF912004EF36D /* XTLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XTLogger.h; path = Logger/XTLogger.h; sourceTree = "<group>"; };
+		C970E3651A6BF912004EF36D /* XTLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XTLogger.m; path = Logger/XTLogger.m; sourceTree = "<group>"; };
+		C9B35B321A5E89B600FEF93E /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9B35B351A5E89B700FEF93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9B35B361A5E89B700FEF93E /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
+		C9B35B3C1A5E89B700FEF93E /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9B35B421A5E89B700FEF93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9B35B431A5E89B700FEF93E /* NetworkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingTests.m; sourceTree = "<group>"; };
+		C9B35B551A5E8A6700FEF93E /* XTRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTRequestOperation.h; sourceTree = "<group>"; };
+		C9B35B561A5E8A6700FEF93E /* XTRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTRequestOperation.m; sourceTree = "<group>"; };
+		C9B35B621A5E8DFB00FEF93E /* XTConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XTConfiguration.h; path = Configuration/XTConfiguration.h; sourceTree = "<group>"; };
+		C9B35B631A5E8DFB00FEF93E /* XTConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XTConfiguration.m; path = Configuration/XTConfiguration.m; sourceTree = "<group>"; };
+		C9B35B681A5E950900FEF93E /* XTConfigurationInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XTConfigurationInternal.h; path = Configuration/XTConfigurationInternal.h; sourceTree = "<group>"; };
+		C9B35B691A5E950900FEF93E /* XTConfigurationInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XTConfigurationInternal.m; path = Configuration/XTConfigurationInternal.m; sourceTree = "<group>"; };
+		C9B35B6F1A5E980000FEF93E /* XTResponseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XTResponseError.h; path = Errors/XTResponseError.h; sourceTree = "<group>"; };
+		C9B35B701A5E980000FEF93E /* XTResponseError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XTResponseError.m; path = Errors/XTResponseError.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9591FFD1A34ED4D00EDB98B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B35B2E1A5E89B600FEF93E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B35B391A5E89B700FEF93E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B35B3D1A5E89B700FEF93E /* Networking.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9591FF71A34ED4D00EDB98B = {
+			isa = PBXGroup;
+			children = (
+				C95920021A34ED4D00EDB98B /* NetworkingLibrary */,
+				C9B35B331A5E89B700FEF93E /* Networking */,
+				C9B35B401A5E89B700FEF93E /* NetworkingTests */,
+				C95920011A34ED4D00EDB98B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C95920011A34ED4D00EDB98B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C95920001A34ED4D00EDB98B /* NetworkingLibrary.a */,
+				C9B35B321A5E89B600FEF93E /* Networking.framework */,
+				C9B35B3C1A5E89B700FEF93E /* NetworkingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C95920021A34ED4D00EDB98B /* NetworkingLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				C959201A1A34ED9300EDB98B /* Networking */,
+				C95920031A34ED4D00EDB98B /* NetworkingLibrary.h */,
+				C95920211A34EEB800EDB98B /* XTGlobals.h */,
+			);
+			path = NetworkingLibrary;
+			sourceTree = "<group>";
+		};
+		C959201A1A34ED9300EDB98B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C970E3631A6BF8F3004EF36D /* Logger */,
+				C9B35B6E1A5E97DC00FEF93E /* Errors */,
+				C9B35B611A5E8DBF00FEF93E /* Configuration */,
+				C9B35B541A5E8A6700FEF93E /* Requests */,
+				C959201D1A34ED9300EDB98B /* XTOperationManager.h */,
+				C959201E1A34ED9300EDB98B /* XTOperationManager.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C970E3631A6BF8F3004EF36D /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				C970E3641A6BF912004EF36D /* XTLogger.h */,
+				C970E3651A6BF912004EF36D /* XTLogger.m */,
+			);
+			name = Logger;
+			sourceTree = "<group>";
+		};
+		C9B35B331A5E89B700FEF93E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B361A5E89B700FEF93E /* Networking.h */,
+				C9B35B341A5E89B700FEF93E /* Supporting Files */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C9B35B341A5E89B700FEF93E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B351A5E89B700FEF93E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9B35B401A5E89B700FEF93E /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B431A5E89B700FEF93E /* NetworkingTests.m */,
+				C9B35B411A5E89B700FEF93E /* Supporting Files */,
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		C9B35B411A5E89B700FEF93E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B421A5E89B700FEF93E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9B35B541A5E8A6700FEF93E /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B551A5E8A6700FEF93E /* XTRequestOperation.h */,
+				C9B35B561A5E8A6700FEF93E /* XTRequestOperation.m */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		C9B35B611A5E8DBF00FEF93E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B621A5E8DFB00FEF93E /* XTConfiguration.h */,
+				C9B35B631A5E8DFB00FEF93E /* XTConfiguration.m */,
+				C9B35B681A5E950900FEF93E /* XTConfigurationInternal.h */,
+				C9B35B691A5E950900FEF93E /* XTConfigurationInternal.m */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		C9B35B6E1A5E97DC00FEF93E /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				C9B35B6F1A5E980000FEF93E /* XTResponseError.h */,
+				C9B35B701A5E980000FEF93E /* XTResponseError.m */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C959202A1A34F18B00EDB98B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B35B6A1A5E950900FEF93E /* XTConfigurationInternal.h in Headers */,
+				C959202C1A34F19300EDB98B /* XTOperationManager.h in Headers */,
+				C970E3661A6BF912004EF36D /* XTLogger.h in Headers */,
+				C9B35B641A5E8DFB00FEF93E /* XTConfiguration.h in Headers */,
+				C9B35B711A5E980000FEF93E /* XTResponseError.h in Headers */,
+				C9B35B571A5E8A6700FEF93E /* XTRequestOperation.h in Headers */,
+				C959202D1A34F19300EDB98B /* NetworkingLibrary.h in Headers */,
+				C959202E1A34F19300EDB98B /* XTGlobals.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B35B2F1A5E89B600FEF93E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B35B6B1A5E950900FEF93E /* XTConfigurationInternal.h in Headers */,
+				C9B35B371A5E89B700FEF93E /* Networking.h in Headers */,
+				C9B35B721A5E980000FEF93E /* XTResponseError.h in Headers */,
+				C9B35B651A5E8DFB00FEF93E /* XTConfiguration.h in Headers */,
+				C9B35B5F1A5E8C6900FEF93E /* XTGlobals.h in Headers */,
+				C970E3681A6BFE23004EF36D /* XTLogger.h in Headers */,
+				C9B35B601A5E8CB600FEF93E /* XTRequestOperation.h in Headers */,
+				C9B35B5E1A5E8C5D00FEF93E /* XTOperationManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C9591FFF1A34ED4D00EDB98B /* NetworkingLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C95920141A34ED4D00EDB98B /* Build configuration list for PBXNativeTarget "NetworkingLibrary" */;
+			buildPhases = (
+				C9591FFC1A34ED4D00EDB98B /* Sources */,
+				C9591FFD1A34ED4D00EDB98B /* Frameworks */,
+				C9591FFE1A34ED4D00EDB98B /* CopyFiles */,
+				C959202A1A34F18B00EDB98B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NetworkingLibrary;
+			productName = NetworkingLibrary;
+			productReference = C95920001A34ED4D00EDB98B /* NetworkingLibrary.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C9B35B311A5E89B600FEF93E /* Networking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9B35B451A5E89B700FEF93E /* Build configuration list for PBXNativeTarget "Networking" */;
+			buildPhases = (
+				C9B35B2D1A5E89B600FEF93E /* Sources */,
+				C9B35B2E1A5E89B600FEF93E /* Frameworks */,
+				C9B35B2F1A5E89B600FEF93E /* Headers */,
+				C9B35B301A5E89B600FEF93E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Networking;
+			productName = Networking;
+			productReference = C9B35B321A5E89B600FEF93E /* Networking.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C9B35B3B1A5E89B700FEF93E /* NetworkingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9B35B481A5E89B700FEF93E /* Build configuration list for PBXNativeTarget "NetworkingTests" */;
+			buildPhases = (
+				C9B35B381A5E89B700FEF93E /* Sources */,
+				C9B35B391A5E89B700FEF93E /* Frameworks */,
+				C9B35B3A1A5E89B700FEF93E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9B35B3F1A5E89B700FEF93E /* PBXTargetDependency */,
+			);
+			name = NetworkingTests;
+			productName = NetworkingTests;
+			productReference = C9B35B3C1A5E89B700FEF93E /* NetworkingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9591FF81A34ED4D00EDB98B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Ruslan Alikhamov";
+				TargetAttributes = {
+					C9591FFF1A34ED4D00EDB98B = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					C9B35B311A5E89B600FEF93E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					C9B35B3B1A5E89B700FEF93E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = C9591FFB1A34ED4D00EDB98B /* Build configuration list for PBXProject "NetworkingLibrary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C9591FF71A34ED4D00EDB98B;
+			productRefGroup = C95920011A34ED4D00EDB98B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9591FFF1A34ED4D00EDB98B /* NetworkingLibrary */,
+				C9B35B311A5E89B600FEF93E /* Networking */,
+				C9B35B3B1A5E89B700FEF93E /* NetworkingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9B35B301A5E89B600FEF93E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B35B3A1A5E89B700FEF93E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9591FFC1A34ED4D00EDB98B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B35B591A5E8A6700FEF93E /* XTRequestOperation.m in Sources */,
+				C9B35B6C1A5E950900FEF93E /* XTConfigurationInternal.m in Sources */,
+				C9B35B731A5E980000FEF93E /* XTResponseError.m in Sources */,
+				C95920201A34ED9300EDB98B /* XTOperationManager.m in Sources */,
+				C9B35B661A5E8DFB00FEF93E /* XTConfiguration.m in Sources */,
+				C970E3671A6BF912004EF36D /* XTLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B35B2D1A5E89B600FEF93E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C970E3691A6BFE7C004EF36D /* XTLogger.m in Sources */,
+				C9B35B5D1A5E8A9900FEF93E /* XTOperationManager.m in Sources */,
+				C9B35B6D1A5E950900FEF93E /* XTConfigurationInternal.m in Sources */,
+				C9B35B741A5E980000FEF93E /* XTResponseError.m in Sources */,
+				C9B35B5A1A5E8A6700FEF93E /* XTRequestOperation.m in Sources */,
+				C9B35B671A5E8DFB00FEF93E /* XTConfiguration.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B35B381A5E89B700FEF93E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B35B441A5E89B700FEF93E /* NetworkingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9B35B3F1A5E89B700FEF93E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9B35B311A5E89B600FEF93E /* Networking */;
+			targetProxy = C9B35B3E1A5E89B700FEF93E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C95920121A34ED4D00EDB98B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C95920131A34ED4D00EDB98B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C95920151A34ED4D00EDB98B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				EXECUTABLE_PREFIX = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		C95920161A34ED4D00EDB98B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				EXECUTABLE_PREFIX = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Release;
+		};
+		C9B35B461A5E89B700FEF93E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Networking/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C9B35B471A5E89B700FEF93E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Networking/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C9B35B491A5E89B700FEF93E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NetworkingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C9B35B4A1A5E89B700FEF93E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NetworkingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9591FFB1A34ED4D00EDB98B /* Build configuration list for PBXProject "NetworkingLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C95920121A34ED4D00EDB98B /* Debug */,
+				C95920131A34ED4D00EDB98B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C95920141A34ED4D00EDB98B /* Build configuration list for PBXNativeTarget "NetworkingLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C95920151A34ED4D00EDB98B /* Debug */,
+				C95920161A34ED4D00EDB98B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9B35B451A5E89B700FEF93E /* Build configuration list for PBXNativeTarget "Networking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B35B461A5E89B700FEF93E /* Debug */,
+				C9B35B471A5E89B700FEF93E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9B35B481A5E89B700FEF93E /* Build configuration list for PBXNativeTarget "NetworkingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B35B491A5E89B700FEF93E /* Debug */,
+				C9B35B4A1A5E89B700FEF93E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9591FF81A34ED4D00EDB98B /* Project object */;
+}

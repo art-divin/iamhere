@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  iAmHERE
+
+  Created by Ruslan Alikhamov on 25/02/15.
+  Copyright (c) 2015 Ruslan Alikhamov. All rights reserved.
+*/
+
+"controllers.map.title" = "MAP";
+"controllers.itinerary.title" = "ROUTE";
+"controllers.search.title" = "SEARCH";
+
+"controllers.map.summary.length" = "Length";
+"controllers.map.summary.time" = "Time";
+"controllers.map.summary.type" = "Type";
+
+"errors.response.empty" = "Empty response returned. Please try again";
+"errors.response.invalid" = "Invalid response returned. Please check parameters";
+"errors.cache.save" = "Unable to save cache. Please check parameters";

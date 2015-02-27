@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  IAHCustomViewController.h
 //  iAmHERE
 //
 //  Created by Ruslan Alikhamov on 25/02/15.
@@ -8,9 +8,6 @@
 
 @import UIKit;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface IAHCustomViewController : UIViewController
 
 @end
-
