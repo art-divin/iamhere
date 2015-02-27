@@ -7,6 +7,8 @@
 //
 
 #import "IAHMapViewController.h"
+#import "IAHAssetsManager.h"
+#import "IAHRouteManager.h"
 
 @import MapKit;
 
@@ -30,6 +32,7 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
 		self.title = NSLocalizedString(@"controllers.map.title", @"Title of the map view");
+		self.tabBarItem.image = [IAHAssetsManager imageForTabBarMap];
 	}
 	return self;
 }
@@ -42,6 +45,10 @@
 	[self.mapView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[mapView]|" options:kNilOptions metrics:nil views:@{ @"mapView" : self.mapView }]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[mapView]|" options:kNilOptions metrics:nil views:@{ @"mapView" : self.mapView }]];
+	[[IAHRouteManager sharedManager] calculateRoute:
+	 ^(IAHItinerary *itinerary, NSError *error) {
+		 // TODO:
+	 }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,6 +11,7 @@
 #import "IAHObjectManager.h"
 #import "IAHLocationManager.h"
 #import "IAHRouteManager.h"
+#import "IAHAssetsManager.h"
 
 @interface IAHSearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -26,6 +27,7 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
 		self.title = NSLocalizedString(@"controllers.search.title", @"Title of the search view");
+		self.tabBarItem.image = [IAHAssetsManager imageForTabBarSearch];
 	}
 	return self;
 }
