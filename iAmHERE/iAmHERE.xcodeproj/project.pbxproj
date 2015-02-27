@@ -36,6 +36,10 @@
 		C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A328F1A9E6911004AD09C /* IAHThemeDefault.m */; };
 		C94A32951A9E6E2B004AD09C /* IAHRESTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32941A9E6E2B004AD09C /* IAHRESTManager.m */; };
 		C94A329A1A9E6E8B004AD09C /* IAHThemeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */; };
+		C9F8C6E21A9FDE9600EDB49C /* IAHAssetsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6E11A9FDE9600EDB49C /* IAHAssetsManager.m */; };
+		C9F8C6EC1A9FEBE200EDB49C /* IAHRouteSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6EB1A9FEBE200EDB49C /* IAHRouteSummary.m */; };
+		C9F8C6F01A9FEC0300EDB49C /* IAHRouteLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6EF1A9FEC0300EDB49C /* IAHRouteLeg.m */; };
+		C9F8C6F41A9FEC2600EDB49C /* IAHRouteManeuver.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6F31A9FEC2600EDB49C /* IAHRouteManeuver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +132,14 @@
 		C94A32931A9E6E2B004AD09C /* IAHRESTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRESTManager.h; path = services/networking/IAHRESTManager.h; sourceTree = "<group>"; };
 		C94A32941A9E6E2B004AD09C /* IAHRESTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRESTManager.m; path = services/networking/IAHRESTManager.m; sourceTree = "<group>"; };
 		C94A32991A9E6E8B004AD09C /* IAHThemeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHThemeTests.m; sourceTree = "<group>"; };
+		C9F8C6E01A9FDE9600EDB49C /* IAHAssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHAssetsManager.h; path = ui/assets/IAHAssetsManager.h; sourceTree = "<group>"; };
+		C9F8C6E11A9FDE9600EDB49C /* IAHAssetsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHAssetsManager.m; path = ui/assets/IAHAssetsManager.m; sourceTree = "<group>"; };
+		C9F8C6EA1A9FEBE200EDB49C /* IAHRouteSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRouteSummary.h; path = itinerary/summary/IAHRouteSummary.h; sourceTree = "<group>"; };
+		C9F8C6EB1A9FEBE200EDB49C /* IAHRouteSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRouteSummary.m; path = itinerary/summary/IAHRouteSummary.m; sourceTree = "<group>"; };
+		C9F8C6EE1A9FEC0300EDB49C /* IAHRouteLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRouteLeg.h; path = itinerary/leg/IAHRouteLeg.h; sourceTree = "<group>"; };
+		C9F8C6EF1A9FEC0300EDB49C /* IAHRouteLeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRouteLeg.m; path = itinerary/leg/IAHRouteLeg.m; sourceTree = "<group>"; };
+		C9F8C6F21A9FEC2600EDB49C /* IAHRouteManeuver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAHRouteManeuver.h; path = itinerary/leg/maneuver/IAHRouteManeuver.h; sourceTree = "<group>"; };
+		C9F8C6F31A9FEC2600EDB49C /* IAHRouteManeuver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAHRouteManeuver.m; path = itinerary/leg/maneuver/IAHRouteManeuver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +211,8 @@
 		C92E46BC1A9FC615008CF84A /* itinerary */ = {
 			isa = PBXGroup;
 			children = (
+				C9F8C6ED1A9FEBE400EDB49C /* leg */,
+				C9F8C6E71A9FEBC900EDB49C /* summary */,
 				C92E46BF1A9FC62B008CF84A /* IAHItinerary.h */,
 				C92E46C01A9FC62B008CF84A /* IAHItinerary.m */,
 			);
@@ -382,6 +396,7 @@
 		C94A32821A9E6754004AD09C /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				C9F8C6DD1A9FDE8800EDB49C /* assets */,
 				C94A32871A9E6794004AD09C /* UIManager */,
 				C94A32831A9E675B004AD09C /* theme */,
 			);
@@ -423,6 +438,43 @@
 				C94A32941A9E6E2B004AD09C /* IAHRESTManager.m */,
 			);
 			name = networking;
+			sourceTree = "<group>";
+		};
+		C9F8C6DD1A9FDE8800EDB49C /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				C9F8C6E01A9FDE9600EDB49C /* IAHAssetsManager.h */,
+				C9F8C6E11A9FDE9600EDB49C /* IAHAssetsManager.m */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		C9F8C6E71A9FEBC900EDB49C /* summary */ = {
+			isa = PBXGroup;
+			children = (
+				C9F8C6EA1A9FEBE200EDB49C /* IAHRouteSummary.h */,
+				C9F8C6EB1A9FEBE200EDB49C /* IAHRouteSummary.m */,
+			);
+			name = summary;
+			sourceTree = "<group>";
+		};
+		C9F8C6ED1A9FEBE400EDB49C /* leg */ = {
+			isa = PBXGroup;
+			children = (
+				C9F8C6F11A9FEC0E00EDB49C /* maneuver */,
+				C9F8C6EE1A9FEC0300EDB49C /* IAHRouteLeg.h */,
+				C9F8C6EF1A9FEC0300EDB49C /* IAHRouteLeg.m */,
+			);
+			name = leg;
+			sourceTree = "<group>";
+		};
+		C9F8C6F11A9FEC0E00EDB49C /* maneuver */ = {
+			isa = PBXGroup;
+			children = (
+				C9F8C6F21A9FEC2600EDB49C /* IAHRouteManeuver.h */,
+				C9F8C6F31A9FEC2600EDB49C /* IAHRouteManeuver.m */,
+			);
+			name = maneuver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -577,7 +629,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94A32811A9E669A004AD09C /* IAHMapViewController.m in Sources */,
+				C9F8C6E21A9FDE9600EDB49C /* IAHAssetsManager.m in Sources */,
 				C94A325F1A9E63D6004AD09C /* IAHPersistenceManager.m in Sources */,
+				C9F8C6EC1A9FEBE200EDB49C /* IAHRouteSummary.m in Sources */,
 				C94A32951A9E6E2B004AD09C /* IAHRESTManager.m in Sources */,
 				C94A32901A9E6911004AD09C /* IAHThemeDefault.m in Sources */,
 				C92E469A1A9EA0E1008CF84A /* IAHLocationManager.m in Sources */,
@@ -588,8 +642,10 @@
 				C94A32771A9E6640004AD09C /* IAHCustomViewController.m in Sources */,
 				C92E46C11A9FC62B008CF84A /* IAHItinerary.m in Sources */,
 				C94A328C1A9E6885004AD09C /* IAHTheme.m in Sources */,
+				C9F8C6F01A9FEC0300EDB49C /* IAHRouteLeg.m in Sources */,
 				C94A327D1A9E666E004AD09C /* IAHSearchViewController.m in Sources */,
 				C94A325B1A9E637B004AD09C /* iAmHERE.xcdatamodeld in Sources */,
+				C9F8C6F41A9FEC2600EDB49C /* IAHRouteManeuver.m in Sources */,
 				C92E46B11A9FA7A5008CF84A /* IAHPlace.m in Sources */,
 				C94A322D1A9E620E004AD09C /* main.m in Sources */,
 				C92E46911A9E8E3B008CF84A /* IAHRESTConfiguration.m in Sources */,
