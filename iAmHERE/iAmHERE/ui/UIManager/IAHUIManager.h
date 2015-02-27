@@ -14,7 +14,7 @@
 
 @interface IAHUIManager : NSObject
 
-+ (IAHMapViewController *)viewControllerForMap;
++ (UINavigationController *)viewControllerForMap;
 + (UINavigationController *)viewControllerForItinerary;
 + (IAHSearchViewController *)viewControllerForSearch;
 

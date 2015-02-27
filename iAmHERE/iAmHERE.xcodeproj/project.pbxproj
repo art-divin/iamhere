@@ -39,6 +39,7 @@
 		C9F8C7021A9FF91800EDB49C /* IAHRouteLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6FB1A9FF91800EDB49C /* IAHRouteLeg.m */; };
 		C9F8C7031A9FF91800EDB49C /* IAHRouteManeuver.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C6FE1A9FF91800EDB49C /* IAHRouteManeuver.m */; };
 		C9F8C7041A9FF91800EDB49C /* IAHRouteSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C7011A9FF91800EDB49C /* IAHRouteSummary.m */; };
+		C9F8C70F1A9FFBBF00EDB49C /* IAHAssetsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F8C70E1A9FFBBF00EDB49C /* IAHAssetsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		C9F8C6FE1A9FF91800EDB49C /* IAHRouteManeuver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHRouteManeuver.m; sourceTree = "<group>"; };
 		C9F8C7001A9FF91800EDB49C /* IAHRouteSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHRouteSummary.h; sourceTree = "<group>"; };
 		C9F8C7011A9FF91800EDB49C /* IAHRouteSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHRouteSummary.m; sourceTree = "<group>"; };
+		C9F8C70D1A9FFBBF00EDB49C /* IAHAssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAHAssetsManager.h; sourceTree = "<group>"; };
+		C9F8C70E1A9FFBBF00EDB49C /* IAHAssetsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAHAssetsManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +396,7 @@
 		C94A32821A9E6754004AD09C /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				C9F8C70C1A9FFBBF00EDB49C /* assets */,
 				C94A32871A9E6794004AD09C /* UIManager */,
 				C94A32831A9E675B004AD09C /* theme */,
 			);
@@ -464,6 +468,16 @@
 			);
 			name = summary;
 			path = itinerary/summary;
+			sourceTree = "<group>";
+		};
+		C9F8C70C1A9FFBBF00EDB49C /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				C9F8C70D1A9FFBBF00EDB49C /* IAHAssetsManager.h */,
+				C9F8C70E1A9FFBBF00EDB49C /* IAHAssetsManager.m */,
+			);
+			name = assets;
+			path = ui/assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,6 +640,7 @@
 				C92E469A1A9EA0E1008CF84A /* IAHLocationManager.m in Sources */,
 				C9F8C7041A9FF91800EDB49C /* IAHRouteSummary.m in Sources */,
 				C94A327A1A9E665F004AD09C /* IAHItineraryViewController.m in Sources */,
+				C9F8C70F1A9FFBBF00EDB49C /* IAHAssetsManager.m in Sources */,
 				C94A32301A9E620E004AD09C /* AppDelegate.m in Sources */,
 				C94A328A1A9E67C4004AD09C /* IAHUIManager.m in Sources */,
 				C92E46C51A9FC9B0008CF84A /* IAHRouteManager.m in Sources */,

@@ -7,6 +7,9 @@
 //
 
 #import "IAHItinerary.h"
+#import "IAHRouteLeg.h"
+#import "IAHRouteManeuver.h"
+#import "IAHRouteSummary.h"
 
 @import Foundation;
 

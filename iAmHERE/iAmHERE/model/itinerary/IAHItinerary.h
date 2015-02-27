@@ -20,6 +20,7 @@
 @property (nonatomic, strong) IAHRouteSummary *summary;
 @property (nonatomic, strong) NSSet *legs;
 
+- (NSUInteger)numberOfManeuvers;
 - (NSArray *)sortedLegs;
 - (NSArray *)sortedPlaces;
 

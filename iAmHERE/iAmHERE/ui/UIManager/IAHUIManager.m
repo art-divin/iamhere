@@ -13,9 +13,10 @@
 
 @implementation IAHUIManager
 
-+ (IAHMapViewController *)viewControllerForMap {
++ (UINavigationController *)viewControllerForMap {
 	IAHMapViewController *mapVC = [IAHMapViewController new];
-	return mapVC;
+	UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:mapVC];
+	return navCtrl;
 }
 
 + (UINavigationController *)viewControllerForItinerary {

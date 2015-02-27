@@ -45,10 +45,18 @@
 	return [IAHTheme colorFromHEX:0X15428C];
 }
 
++ (UIColor *)colorForPolyline {
+	return [IAHTheme colorFromHEX:0X15428C];
+}
+
 #pragma mark - Dimensions
 
 + (CGFloat)heightForTableViewCell {
 	return 44.0f;
+}
+
++ (CGFloat)widthForPolyline {
+	return 10.0f;
 }
 
 @end
