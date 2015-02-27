@@ -109,12 +109,32 @@
 	return nil;
 }
 
++ (UIColor *)colorForPolyline {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass colorForPolyline];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return nil;
+}
+
 #pragma mark - Dimensions
 
 + (CGFloat)heightForTableViewCell {
 	if ([IAHTheme sharedTheme].themeClass) {
 		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
 			return [[IAHTheme sharedTheme].themeClass heightForTableViewCell];
+		}
+	}
+	NSAssert(false, @"theme subclass was not set!");
+	return 0.0f;
+}
+
++ (CGFloat)widthForPolyline {
+	if ([IAHTheme sharedTheme].themeClass) {
+		if ([(NSObject *)[IAHTheme sharedTheme].themeClass respondsToSelector:_cmd]) {
+			return [[IAHTheme sharedTheme].themeClass widthForPolyline];
 		}
 	}
 	NSAssert(false, @"theme subclass was not set!");

@@ -50,6 +50,11 @@
 	}
 }
 
+- (NSUInteger)numberOfManeuvers {
+	NSSet *retVal = [self.legs valueForKeyPath:@"@distinctUnionOfSets.maneuvers"];
+	return [retVal count];
+}
+
 - (NSArray *)sortedLegs {
 	NSSortDescriptor *sortDescr = [[NSSortDescriptor alloc] initWithKey:@"idx" ascending:YES];
 	return [self.legs sortedArrayUsingDescriptors:@[ sortDescr ]];

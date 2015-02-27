@@ -20,9 +20,11 @@
 + (UIColor *)colorForButtonTitle;
 + (UIColor *)colorForBarTint;
 + (UIColor *)colorForCellTitle;
++ (UIColor *)colorForPolyline;
 
 // dimensions
 + (CGFloat)heightForTableViewCell;
++ (CGFloat)widthForPolyline;
 
 @end
 
