@@ -58,11 +58,14 @@
 	withPlace.idx = idx;
 }
 
-- (void)calculateRoute:(void (^)(IAHItinerary *, NSError *))callback {
+- (void)calculateRouteForTransportType:(NSString *)type
+							  callback:(void (^)(IAHItinerary *, NSError *))callback
+{
+	NSParameterAssert(type);
 	NSArray *locationArr = [self.itinerary valueForKeyPath:@"sortedPlaces.location"];
 	__weak typeof(self) weakSelf = self;
 	[IAHRESTManager fetchRouteForLocations:locationArr
-							 transportType:@"car"
+							 transportType:type
 						   completionBlock:
 	 ^(NSArray *routeArr, XTResponseError *error) {
 		 if (!error) {

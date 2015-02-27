@@ -25,6 +25,7 @@
 // dimensions
 + (CGFloat)heightForTableViewCell;
 + (CGFloat)widthForPolyline;
++ (CGFloat)animationDuration;
 
 @end
 

@@ -26,7 +26,11 @@
 
 @interface IAHMapViewController () <MKMapViewDelegate>
 
+@property (nonatomic, strong) UILabel *settingsLbl;
+@property (nonatomic, strong) UIView *settingsView;
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, assign, getter = hasSettingsVisible) BOOL settingsVisible;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
 
 @end
 
@@ -43,23 +47,95 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	self.settingsView = [UIView new];
+	self.settingsLbl = [UILabel new];
+	[self.settingsLbl setNumberOfLines:0];
+	[self.settingsView setBackgroundColor:[IAHTheme colorForViewBackground]];
 	self.mapView = [[MKMapView alloc] init];
 	self.mapView.delegate = self;
 	[self.view addSubview:self.mapView];
+	self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[ @"Walk", @"Car", @"Transport" ]];
+	[self.segmentedControl addTarget:self action:@selector(updateRouteType) forControlEvents:UIControlEventValueChanged];
+	[self.segmentedControl setSelectedSegmentIndex:0];
+	[self.settingsView addSubview:self.segmentedControl];
+	[self.settingsView addSubview:self.settingsLbl];
+	[self.segmentedControl setTranslatesAutoresizingMaskIntoConstraints:NO];
+	[self.settingsLbl setTranslatesAutoresizingMaskIntoConstraints:NO];
+	[self.settingsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[settingsLbl]-[control]-|"
+																			  options:kNilOptions
+																			  metrics:nil
+																				views:@{ @"control" : self.segmentedControl,
+																						 @"settingsLbl" : self.settingsLbl }]];
+	[self.settingsView addConstraint:[NSLayoutConstraint constraintWithItem:self.segmentedControl
+																  attribute:NSLayoutAttributeCenterX
+																  relatedBy:NSLayoutRelationEqual
+																	 toItem:self.settingsView
+																  attribute:NSLayoutAttributeCenterX
+																 multiplier:1.0f
+																   constant:0.0f]];
+	[self.settingsView addConstraint:[NSLayoutConstraint constraintWithItem:self.settingsLbl
+																  attribute:NSLayoutAttributeCenterX
+																  relatedBy:NSLayoutRelationEqual
+																	 toItem:self.settingsView
+																  attribute:NSLayoutAttributeCenterX
+																 multiplier:1.0f
+																   constant:0.0f]];
 	[self.mapView setTranslatesAutoresizingMaskIntoConstraints:NO];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[mapView]|" options:kNilOptions metrics:nil views:@{ @"mapView" : self.mapView }]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[mapView]|" options:kNilOptions metrics:nil views:@{ @"mapView" : self.mapView }]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[mapView]|"
+																	  options:kNilOptions
+																	  metrics:nil
+																		views:@{ @"mapView" : self.mapView }]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[mapView]|"
+																	  options:kNilOptions
+																	  metrics:nil
+																		views:@{ @"mapView" : self.mapView }]];
+	UIBarButtonItem *toggleBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleSettings)];
+	self.navigationItem.leftBarButtonItem = toggleBtn;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+- (void)updateRouteType {
+	NSString *type = nil;
+	switch (self.segmentedControl.selectedSegmentIndex) {
+		case 0: type = @"pedestrian"; break;
+		case 1: type = @"car"; break;
+		case 2: type = @"publicTransport";	break;
+		default: break;
+	}
 	__weak typeof(self) weakSelf = self;
-	[[IAHRouteManager sharedManager] calculateRoute:
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	[[IAHRouteManager sharedManager] calculateRouteForTransportType:type
+														   callback:
 	 ^(IAHItinerary *itinerary, NSError *error) {
 		 dispatch_async(dispatch_get_main_queue(), ^{
+			 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 			 if (error) {
 				 // TODO: show error
 			 } else {
+				 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+				 NSDateComponents *comps = [NSDateComponents new];
+				 comps.second = [itinerary.summary.travelTime integerValue];
+				 NSCalendar *calendar = [NSCalendar currentCalendar];
+				 NSDate *date = [calendar dateFromComponents:comps];
+				 NSString *templateStr = [NSDateFormatter dateFormatFromTemplate:@"HHmmss" options:kNilOptions locale:[NSLocale currentLocale]];
+				 [dateFormatter setDateFormat:templateStr];
+				 NSString *timeStr = [dateFormatter stringFromDate:date];
+				 CLLocationDistance distance = [itinerary.summary.distance doubleValue];
+				 MKDistanceFormatter *distanceFmt = [MKDistanceFormatter new];
+				 NSString *distanceStr = [distanceFmt stringFromDistance:distance];
+				 NSString *infoStr = [[NSString alloc] initWithFormat:@"%@: %@\n%@: %@\n%@: %@",
+									  NSLocalizedString(@"controllers.map.summary.type", @"Type label in summary in Map settings"),
+									  type,
+									  NSLocalizedString(@"controllers.map.summary.time", @"Time label in summary in Map settings"),
+									  timeStr,
+									  NSLocalizedString(@"controllers.map.summary.length", @"Length label in summary in Map settings"),
+									  distanceStr];
+				 NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+				 paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+				 paragraph.alignment = NSTextAlignmentCenter;
+				 NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:infoStr
+																			   attributes:@{ NSForegroundColorAttributeName : [IAHTheme colorForViewTint],
+																							 NSParagraphStyleAttributeName : paragraph }];
+				 weakSelf.settingsLbl.attributedText = attrStr;
 				 NSArray *legArr = [itinerary sortedLegs];
 				 NSUInteger totalNumberOfSteps = [itinerary numberOfManeuvers];
 				 NSArray *placeArr = [itinerary sortedPlaces];
@@ -96,6 +172,48 @@
 			 }
 		 });
 	 }];
+}
+
+// (c) http://stackoverflow.com/a/14622113/611055
+- (void)toggleSettings {
+	__weak typeof(self) weakSelf = self;
+	[UIView animateWithDuration:[IAHTheme animationDuration]
+					 animations:^{
+						 CATransition *animation = [CATransition animation];
+						 [animation setDuration:[IAHTheme animationDuration]];
+						 [animation setTimingFunction:[CAMediaTimingFunction functionWithName:@"default"]];
+						 animation.fillMode = kCAFillModeForwards;
+						 [animation setRemovedOnCompletion:NO];
+						 // For curl and uncurl the animation here..
+						 if (!weakSelf.hasSettingsVisible) {
+							 animation.endProgress = 0.65;
+							 animation.type = @"pageCurl";
+							 [weakSelf.mapView.layer addAnimation:animation forKey:@"pageCurlAnimation"];
+							 [weakSelf.mapView addSubview:weakSelf.settingsView];
+							 [weakSelf.settingsView setTranslatesAutoresizingMaskIntoConstraints:NO];
+							 [weakSelf.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[settingsView]|"
+																									  options:kNilOptions
+																									  metrics:nil
+																										views:@{ @"settingsView" : weakSelf.settingsView }]];
+							 [weakSelf.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[settingsView]|"
+																									  options:kNilOptions
+																									  metrics:nil
+																										views:@{ @"settingsView" : weakSelf.settingsView }]];
+							 weakSelf.settingsVisible = YES;
+						 } else {
+							 animation.startProgress = 0.35;
+							 animation.type = @"pageUnCurl";
+							 [weakSelf.mapView.layer addAnimation:animation forKey:@"pageUnCurlAnimation"];
+							 [weakSelf.settingsView removeFromSuperview];
+							 weakSelf.settingsVisible = NO;
+						 }
+					 }
+	 ];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self updateRouteType];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -59,4 +59,8 @@
 	return 10.0f;
 }
 
++ (CGFloat)animationDuration {
+	return 0.3f;
+}
+
 @end
